@@ -1,0 +1,5 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model>
+        <property name="title">登录相关</property>
+    </model>
+</root>

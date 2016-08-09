@@ -1,0 +1,7 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model id="task">
+        <property name="title">任务</property>
+        <property name="sendTaskNum">5</property>
+        <property name="receiveTaskNum">5</property>
+    </model>
+</root>

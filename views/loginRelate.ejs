@@ -1,0 +1,34 @@
+
+<% include header.ejs %>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <% include left.ejs %>
+
+        <div class="col-md-9">
+            <div class="col-md-9">
+                
+                    <pre>这是登录相关</pre>
+
+            </div>
+            
+            <div class="col-md-3">
+                <p class="text-info">当前登录的服务器为：</p>
+                <p class="text-success"><%= global.reqServerIP %></p>
+                <p><a class="btn btn-primary btn-lg" href="./" role="button">切换服务器</a></p>
+                <p></p>
+
+                <% if(account != ""){ %>
+                    <p class="text-info">当前查询的手机号为：</p>
+                    <p class="text-success"><%= account %></p>
+                    <p><a class="btn btn-primary btn-lg" href="./push?id=<%= serverIP %>" role="button">更换手机号</a></p>
+                <% } %>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<% include footer.ejs %>
+

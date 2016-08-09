@@ -1,0 +1,7 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model id="push">
+        <property name="title">推送</property>
+        <property name="pushMsgCount">5</property>
+        <property name="pushUserEventCount">5</property>
+    </model>
+</root>

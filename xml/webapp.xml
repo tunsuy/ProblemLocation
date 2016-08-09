@@ -1,0 +1,7 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model id="webapp">
+        <property name="title">网页版</property>
+        <property name="jsLogNum">5</property>
+        <property name="phpLogNum">10</property>
+    </model>
+</root>

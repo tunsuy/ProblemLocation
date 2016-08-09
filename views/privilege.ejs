@@ -1,0 +1,91 @@
+
+<% include header.ejs %>
+<% include helper/validator.ejs %>
+
+<div class="container-fluid" id="container">
+    <div class="row">
+
+        <% include left.ejs %>
+        <div class="col-md-9">
+            <div class="col-md-9">
+                <% if(account == ""){ %>
+                    <form class="form-horizontal" role="form" id="serverForm" name="serverForm" action="./privilege" method="post" >
+                        <fieldset>
+                          <legend>用户信息</legend>
+
+                          <div class="form-group">
+                              <label class="col-sm-2 control-label" for="ds_host">手机号码</label>
+                              <div class="col-sm-4">
+                                <input class="form-control" name="account" id="account" type="text" placeholder="" value="<%= global.accountCache %>" required="required" maxlength="11" onkeydown="limitPhone();" />
+                              </div>
+                              <!-- <div class="col-sm-8">
+                                <input class="btn btn-primary btn-lg" role="button" type="submit" value="确定" />
+                              </div> -->
+                          </div>
+
+                          <legend>查询条件</legend>
+
+                          <div class="form-group">
+                              <div class="col-sm-2 checkboxThree">
+                                <input class="form-control" name="lookPermitFlag" id="lookPermitFlag" type="checkbox">
+                                <label for="lookPermitFlag"></label>
+                              </div>
+                              <label class="col-sm-3 control-label" for="ds_host">具有查看的权限范围</label>
+                          </div>
+
+                          <div class="form-group">
+                              <div class="col-sm-2 checkboxThree">
+                                <input class="form-control" name="notifyPermitFlag" id="notifyPermitFlag" type="checkbox">
+                                <label for="notifyPermitFlag"></label>
+                              </div>
+                              <label class="col-sm-3 control-label" for="ds_host">具有通知的权限情况</label>
+                          </div>
+
+                          <div class="form-group">
+                              <div class="col-sm-2 checkboxThree">
+                                <input class="form-control" name="permitAllocationFlag" id="permitAllocationFlag" type="checkbox">
+                                <label for="permitAllocationFlag"></label>
+                              </div>
+                              <label class="col-sm-4 control-label" for="ds_host">所在公司管理员权限分配情况</label>
+                          </div>
+
+                           <div class="form-group">
+                              <div class="col-sm-4"></div>
+                              <div class="col-sm-8">
+                                <input class="btn btn-primary btn-lg" role="button" type="submit" value="确定" />
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="col-sm-12 control-label" for="ds_host">
+                                <p class="text-left text-success">PS：可任意组合选择想要显示的信息</p>
+                              </label>
+                          </div>
+
+                        <fieldset>
+
+                    </form>
+                <% }else{ %>
+                    <pre><%=content %></pre>
+                <% } %>
+            </div>
+            
+            <div class="col-md-3">
+                <p class="text-info">当前登录的服务器为：</p>
+                <p class="text-success"><%= global.reqServerIP %></p>
+                <p><a class="btn btn-primary btn-lg" href="./" role="button">切换服务器</a></p>
+                <p></p>
+
+                <% if(account != ""){ %>
+                    <p class="text-info">当前查询的手机号为：</p>
+                    <p class="text-success"><%= account %></p>
+                    <p><a class="btn btn-primary btn-lg" href="./privilege" role="button">更换手机号</a></p>
+                <% } %>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<% include footer.ejs %>
+

@@ -1,0 +1,70 @@
+
+<% include header.ejs %>
+<% include helper/validator.ejs %>
+
+<div class="jumbotron">
+  <h2>Hello, MOA!</h2>
+  <p></p>
+  <br/>
+  <form class="form-horizontal" role="form" id="serverForm" name="serverForm" action="./index" method="post" > 
+    <fieldset>
+      <legend>服务器相关信息</legend>
+
+      <div class="form-group">
+          <label class="col-sm-2 control-label" for="ds_host">服务器IP</label>
+          <div class="col-sm-4">
+            <input class="form-control" name="serverIP" id="serverIP" type="text" placeholder="" value="<%= global.reqServerIP %>" required="required" maxlength="15" onkeydown="limitIP();"/>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-sm-2 control-label" for="ds_host">用户名</label>
+          <div class="col-sm-4">
+            <input class="form-control" name="userName" id="userName" type="text" placeholder="" value="<%= global.reqUserName %>" required="required"/>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-sm-2 control-label" for="ds_name">密码</label>
+          <div class="col-sm-4">
+             <input class="form-control" name="pwd" id="pwd" type="password" placeholder="" value="<%= global.reqPwd %>" required="required"/>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-sm-4 control-label text-warning" for="ds_name"><%=errInfo %></label>
+          
+      </div>
+
+      <div class="form-group">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-3">
+            <input class="btn btn-primary btn-lg" role="button" type="button" value="登录阿里云" onclick="window.location.href='./index?id=aly'" />
+          </div>
+          <div class="col-sm-7">
+            <input class="btn btn-primary btn-lg" role="button" type="submit" value="确定" />
+          </div>
+      </div>
+
+      <!-- <div class="form-group">
+          <label class="col-sm-12 control-label" for="ds_host">
+            <p class="text-left">PS：对于集群环境，如果输入的服务器IP不是该公司所在的entry IP，需要修改配置文件并重启服务</p>
+          </label>
+      </div> -->
+      
+
+    	<!-- <p>请输入服务器IP：</p>
+    	<input type="text" name="serverIP" id="serverIP"/>
+      <br/>
+      <p>
+        用户名：<input type="text" name="serverIP" id="userName"/>
+        密  码：<input type="text" name="serverIP" id="pwd"/>
+      </p>
+    	<p></p> -->
+    	<!-- <input class="btn btn-primary btn-lg" role="button" type="submit" value="确定" /> -->
+    	<!--<p><a class="btn btn-primary btn-lg" role="button" type="submit" value="Submit">确定</a></p> -->
+    <fieldset>
+  </form>
+</div>
+
+<% include footer.ejs %>

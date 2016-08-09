@@ -1,0 +1,5 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model id="commonTool">
+        <property name="title">公共工具</property>
+    </model>
+</root>

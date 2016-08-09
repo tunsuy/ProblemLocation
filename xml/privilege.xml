@@ -1,0 +1,5 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model id="privilege">
+        <property name="title">权限</property>
+    </model>
+</root>

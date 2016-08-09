@@ -1,0 +1,13 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model id="workFlowed">
+        <property name="title">流程</property>
+        <property name="progressIP">0</property>
+        <property name="applyingNum">5</property>
+        <property name="rejectedNum">5</property>
+        <property name="handlingNum">5</property>
+        <property name="handledNum">5</property>
+        <property name="copymeNum">5</property>
+        <property name="userAccount">root</property>
+        <property name="password">sangfordb</property>
+    </model>
+</root>

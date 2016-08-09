@@ -1,0 +1,5 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model id="workReport">
+        <property name="title">工作汇报</property>
+    </model>
+</root>

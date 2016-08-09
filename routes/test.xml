@@ -1,0 +1,50 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model name="消息">
+        <question name="1">
+            <property name="id">消息</property>
+            <property name="title">问题1</property>
+            <property name="cmd">命令1</property>
+        </question>
+        <question name="2">
+            <property name="id">消息</property>
+            <property name="title">问题2</property>
+            <property name="cmd">命令2</property>
+        </question>
+    </model>
+    <model name="通讯录">
+        <question name="1">
+            <property name="id">通讯录</property>
+            <property name="title">问题1</property>
+            <property name="cmd">命令1</property>
+        </question>
+        <question name="2">
+            <property name="id">通讯录</property>
+            <property name="title">问题2</property>
+            <property name="cmd">命令2</property>
+        </question>
+    </model>
+    <model name="应用">
+        <question name="1">
+            <property name="id">应用</property>
+            <property name="title">问题1</property>
+            <property name="cmd">命令1</property>
+        </question>
+        <question name="2">
+            <property name="id">应用</property>
+            <property name="title">问题2</property>
+            <property name="cmd">命令2</property>
+        </question>
+    </model>
+    <model name="我">
+        <question name="1">
+            <property name="id">我</property>
+            <property name="title">问题1</property>
+            <property name="cmd">命令1</property>
+        </question>
+        <question name="2">
+            <property name="id">我</property>
+            <property name="title">问题2</property>
+            <property name="cmd">命令2</property>
+        </question>
+    </model>
+</root>

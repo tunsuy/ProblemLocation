@@ -1,0 +1,6 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model id="workattendance">
+        <property name="title">考勤</property>
+        <property name="progressIP">0</property>
+    </model>
+</root>

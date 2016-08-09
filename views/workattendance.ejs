@@ -1,0 +1,88 @@
+
+<% include header.ejs %>
+<% include helper/validator.ejs %>
+
+<div class="container-fluid" id="container">
+    <div class="row">
+
+        <% include left.ejs %>
+
+        <div class="col-md-9">
+            <div class="col-md-9">
+                
+                <% if(account == ""){ %>
+                <form class="form-horizontal" role="form" id="serverForm" name="serverForm" action="./workattendance" method="post">
+
+                    <fieldset>
+                      <legend>用户信息</legend>
+
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label" for="ds_host">手机号码</label>
+                          <div class="col-sm-4">
+                            <input class="form-control" name="account" id="account" type="text" placeholder="" value="<%= global.accountCache %>" required="required" maxlength="11" onkeydown="limitPhone();"/>
+                          </div>
+                      </div>
+
+                      <legend>查询条件</legend>
+
+                      <div class="form-group">
+                          <label class="col-sm-12 control-label" for="ds_host">
+                            <p class="text-left text-success">想要查看考勤的时间段：格式-"20150721"</p>
+                          </label>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label" for="ds_host">开始时间</label>
+                          <div class="col-sm-4">
+                            <input class="form-control" name="startTime" id="startTime" type="text" placeholder="" required="required"/>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label" for="ds_host">结束时间</label>
+                          <div class="col-sm-4">
+                            <input class="form-control" name="endTime" id="endTime" type="text" placeholder=""/>
+                          </div>
+                      </div>
+
+                       <div class="form-group">
+                          <div class="col-sm-4"></div>
+                          <div class="col-sm-8">
+                            <input class="btn btn-primary btn-lg" role="button" type="submit" value="确定" />
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="col-sm-12 control-label" for="ds_host">
+                            <p class="text-left text-success">PS：开始时间和结束时间都为可选，如果想查看某天的考勤情况，只需输入开始时间即可</p>
+                          </label>
+                      </div>
+
+                    <fieldset>
+
+                </form>
+                <% }else{ %>
+                    <pre><%=content %></pre>
+                <% } %>
+              
+            </div>
+            
+            <div class="col-md-3">
+                <p class="text-info">当前登录的服务器为：</p>
+                <p class="text-success"><%= serverIP %></p>
+                <p><a class="btn btn-primary btn-lg" href="./" role="button">切换服务器</a></p>
+                <p></p>
+
+                <% if(account != ""){ %>
+                    <p class="text-info">当前查询的手机号为：</p>
+                    <p class="text-success"><%= account %></p>
+                    <p><a class="btn btn-primary btn-lg" href="./workattendance" role="button">更换手机号</a></p>
+                <% } %>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<% include footer.ejs %>
+

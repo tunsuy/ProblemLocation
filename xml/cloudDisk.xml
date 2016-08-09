@@ -1,0 +1,5 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model id="cloudDisk">
+        <property name="title">云盘</property>
+    </model>
+</root>

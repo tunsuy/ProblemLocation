@@ -1,0 +1,10 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model id="im">
+        <property name="title">消息</property>
+        <property name="allSingleMsgNum">5</property>
+        <property name="sendSingleMsgNum">5</property>
+        <property name="receiveSingleMsgNum">5</property>
+        <property name="sendGroupMsgNum">5</property>
+        <property name="receiveGroupMsgNum">5</property>
+    </model>
+</root>

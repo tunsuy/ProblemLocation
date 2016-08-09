@@ -1,0 +1,5 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <model id="legwork">
+        <property name="title">客户拜访</property>
+    </model>
+</root>

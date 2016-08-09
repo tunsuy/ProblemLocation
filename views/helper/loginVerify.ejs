@@ -1,0 +1,60 @@
+
+// <script>
+// 	var userName = document.getElementById("userName");
+// 	var password = document.getElementById("password");
+// 	global.reqUserName = userName;
+// 	global.reqPwd = password;
+// </script>
+
+// <script>
+<% 
+// function loginVerify() {
+
+		var userName = document.getElementById("userName");
+		var password = document.getElementById("password");
+		global.reqUserName = userName;
+		global.reqPwd = password;
+
+		console.log("开始调用loginVerify！！！！！！！");
+		var Client = require('ssh2').Client;
+		var conn = new Client();
+		// return false;
+		submitFlag = false;
+		try{
+			conn.on('ready', function() {
+		        conn.exec(contentCmd, function(err, stream) {
+		            if (err) throw err;
+		            stream.on('close', function(err, stream) {
+		                 conn.end();
+		            }).on('data', function(data) {
+		            	console.log("登录正确！！！！！！！！");
+		                // res.render('login.ejs', {errInfo:"",formFlag:"true"});
+		                // submitFlag = true;
+		                
+		            }).stderr.on('data', function(data) {
+		                console.log('STDERR: ' + data);
+		            });
+
+		        });
+		    }).connect({
+		        host: global.reqServerIP,
+		        port: 22,
+		        username: global.reqUserName,
+		        password: global.reqPwd
+		    });
+		    return false;
+		}catch(err){
+			console.log("登录失败！！！！！！！！");
+			// res.render('login.ejs', {errInfo:err.message,formFlag:"false"});
+			// submitFlag = false;
+
+		}finally{
+			console.log("登录默认！！！！！！！！");
+			// res.render('login.ejs', {errInfo:"",formFlag:"true"});
+			// submitFlag = false;
+		}
+		    
+	// }
+ %>	
+// </script>
+

@@ -1,0 +1,113 @@
+
+<% include header.ejs %>
+
+<div class="container-fluid" id="container">
+    <div class="row">
+
+        <% include left.ejs %>
+
+        <div class="col-md-9">
+            <div class="col-md-9">
+              <fieldset>
+                <legend>基础工具</legend>
+
+                <div class="container-fluid">
+                    <div class="accordion" id="accordion2">
+                      <form class="form-horizontal" role="form" id="serverForm" name="serverForm" action="./commonTool?id=1" method="post">
+                        <div class="accordion-group">
+                          <div class="accordion-heading form-group">
+                            <a class="accordion-toggle  col-sm-4" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                               解析由 keycode de 编码的内容
+                            </a>
+                          </div>
+                          <div id="collapseOne" class="accordion-body collapse" style="height: 0px; ">
+                            <div class="accordion-inner">
+                              <% if (decodeContent == ""){ %>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="ds_host">解码内容</label>
+                                    <div class="col-sm-4">
+                                      <!-- <input class="form-control" name="decode" id="decode" type="text" placeholder=""/> -->
+                                      <textarea rows="2" class="form-control" name="decode" id="decode" required="required"></textarea>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <input class="btn btn-primary btn-mg" role="button" type="submit" value="确定" />
+                                    </div>
+                                </div>
+                              <% }else{ %>
+                                <pre><%= decodeContent %></pre>
+                              <% } %>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                      <form class="form-horizontal" role="form" id="serverForm" name="serverForm" action="./commonTool?id=2" method="post">
+                        <div class="accordion-group">
+                          <div class="accordion-heading form-group">
+                            <a class="accordion-toggle col-sm-4" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                             转换格林威治时间为年月日时间
+                            </a>
+                          </div>
+                          <div id="collapseTwo" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                              <% if (GMTContent == ""){ %>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="ds_host">格林威治时间</label>
+                                    <div class="col-sm-4">
+                                      <input class="form-control" name="GMT" id="GMT" type="text" placeholder="" required="required"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <input class="btn btn-primary btn-mg" role="button" type="submit" value="确定" />
+                                    </div>
+                                </div>
+                              <% }else{ %>
+                                <pre><%= GMTContent %></pre>
+                              <% } %>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                      <form class="form-horizontal" role="form" id="serverForm" name="serverForm" action="./commonTool?id=3" method="post">
+                        <div class="accordion-group">
+                          <div class="accordion-heading form-group">
+                            <a class="accordion-toggle col-sm-4" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                             转换年月日时间为格林威治时间
+                            </a>
+                          </div>
+                          <div id="collapseThree" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                              <% if (generalTimeContent == "") { %>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="ds_host">年月日时间</label>
+                                    <div class="col-sm-4">
+                                      <input class="form-control" name="generalTime" id="generalTime" type="text" placeholder="" required="required"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <input class="btn btn-primary btn-mg" role="button" type="submit" value="确定" />
+                                    </div>
+                                </div>
+                              <% }else{ %>
+                                <pre><%=generalTimeContent %></pre>
+                              <% } %>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                      </div>
+              </div>
+
+              <fieldset>
+            </div>
+            
+            <div class="col-md-3">
+                <p class="text-info">当前登录的服务器为：</p>
+                <p class="text-success"><%= serverIP %></p>
+                <p><a class="btn btn-primary btn-lg" href="./" role="button">切换服务器</a></p>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<% include footer.ejs %>
+
