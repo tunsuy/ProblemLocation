@@ -30,9 +30,8 @@ router.get('/', function(req, res, next) {
 	}
 	console.log("登录的服务器为："+global.reqServerIP);
 	if(global.reqServerIP){
-		// var cmdData = questionsData[parseInt(reqId)+2].firstChild.data;
-		// console.log("开始执行uploadFile:------");
-		// uploadToolFile.uploadFile("115.28.39.52", "frontground", "873b9673fdb5f532", "aly");
+		console.log("开始执行uploadFile:------");
+		uploadToolFile.uploadFileToAly();
 		res.render('index.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP});
 	}
 	else{
@@ -97,7 +96,7 @@ router.post('/', function(req, res, next) {
             }).on('data', function(data) {
             	console.log("登录正确！！！！！！！！");
             	console.log("开始执行uploadFile:------");
-				uploadToolFile.uploadFile(global.reqServerIP, global.reqUserName, global.reqPwd, "");
+				uploadToolFile.uploadFile(global.reqServerIP, global.reqUserName, global.reqPwd);
                 res.render('index.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP});
                 
             }).stderr.on('data', function(data) {

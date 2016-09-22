@@ -15,6 +15,8 @@ var privilege=rf.readFileSync("xml/privilege.xml","utf-8");
 var webapp=rf.readFileSync("xml/webapp.xml","utf-8");
 var legwork=rf.readFileSync("xml/legwork.xml","utf-8");
 
+/** 使用xpath处理 */
+
 var select = require('xpath.js');
 var dom = require('xmldom').DOMParser;
 
@@ -31,6 +33,7 @@ var cloudDiskData = new dom().parseFromString(cloudDisk);
 var privilegeData = new dom().parseFromString(privilege); 
 var webappData = new dom().parseFromString(webapp);
 var legworkData = new dom().parseFromString(legwork);
+var configData = new dom().parseFromString(config);
 
 function getModelsAttributesData() {
  	var pushAttributes = select(pushData, "/root/model");
@@ -75,6 +78,31 @@ function getModelsAttributesData() {
 	return modelsPropertys;
 }
 
+// function getServerInfo() {
+	// var configAttributes = select(configData, "/root/server/@id");
+	// var configProperty = select(configData, "/root/server/property");
+	// console.log(configAttributes.nodeName)
+	// for (var i = configAttributes.length - 1; i >= 0; i--) {
+	// 	console.log(configAttributes[i].value);
+		// console.log(configAttributes[i].ownerElement.childNodes);
+		// var srvChildNodes = configAttributes[i].ownerElement.childNodes;
+		// for (var j = srvChildNodes.length - 1; j >= 0; j--) {
+		// 	if (srvChildNodes[j].nodeName == "property") {
+				// var configProperty = select(configData, "/root/server/property/@name");
+				// for (var k = configProperty.length - 1; k >= 0; k--) {
+				// 	console.log(configProperty[k].value);
+				// }
+				// console.log(srvChildNodes[j].firstChild.data)
+	// 			console.log(srvChildNodes[j].ownerDocument.childNodes.attributes)
+	// 		}
+	// 	}
+	// }
+	// console.log(configAttributes)
+	// console.log(configAttributes[0][@id="dbAccountInfo"])
+	// console.log(configProperty[5])
+	// return new Array(configAttributes, configProperty);
+// }
+
 // function getQuestionsData() {
 // 	var questions = select(doc, "/root/model/question");
 // 	// console.log(questions);
@@ -86,7 +114,31 @@ function getModelsAttributesData() {
 // 	return propertys;
 // }
 
+/** 使用xml2js处理 */
+
+var parseString = require('xml2js').parseString;
+var config=rf.readFileSync("xml/config.xml","utf-8");
+
+function getServerInfo(serverName) {
+	var serverInfo = new Array();
+	parseString(config, { explicitArray : false }, function (err, result) {
+    	var jsonStr = JSON.stringify(result);
+    	var json = JSON.parse(jsonStr);
+    	var servers = json.root.server;
+    	for (var i = servers.length - 1; i >= 0; i--) {
+    		if (servers[i].$.id == serverName) {
+    			var propertys = servers[i].property;
+    			for (var j = propertys.length - 1; j >= 0; j--) {
+    				serverInfo[propertys[j].$.name] = propertys[j]._;
+    			}
+    			break;
+    		}
+    	}
+	});
+	return serverInfo;
+}
 
 exports.getModelsAttributesData = getModelsAttributesData;
 exports.getModelsPropertysData = getModelsPropertysData;
+exports.getServerInfo = getServerInfo;
 // exports.getQuestionsData = getQuestionsData;

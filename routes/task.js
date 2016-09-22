@@ -9,6 +9,9 @@ var reqServerIP = "";
 var modelsPropertysData = xmlDataHandler.getModelsPropertysData();
 var modelsAttributesData = xmlDataHandler.getModelsAttributesData();
 
+var dbsecServerInfo = xmlDataHandler.getServerInfo("dbsecAccountInfo");
+var dbServerInfo = xmlDataHandler.getServerInfo("dbAccountInfo");
+
 router.get('/', function(req, res, next) {
 
 	// var reqServerIP = req.query.id;
@@ -35,7 +38,7 @@ router.post('/', function(req, res, next) {
 
 	var pid = "", sendTaskNum = "", receiveTaskNum = "";
 	var contentData = "用户的基本信息：\n";
-	var contentCmd = "get_user_info.py "+reqAccount;
+	var contentCmd = "get_user_info "+reqAccount;
     var pidStr = "";
 
 	var Client = require('ssh2').Client;
@@ -47,7 +50,7 @@ router.post('/', function(req, res, next) {
                 stream.on('close', function(err, stream) {
                     
                     alyConn.end();
-                    console.log("退出115.28.39.52成功！！！！！！！");
+                    console.log("退出121.42.193.51成功！！！！！！！");
 
                     alyConn.on('ready', function() {                               
                         alyConn.exec(contentCmd, function(err, stream) {
@@ -67,10 +70,10 @@ router.post('/', function(req, res, next) {
                         });
 
                     }).connect({
-                        host: "121.42.193.51",
+                        host: dbServerInfo.ip,
                         port: 22,
-                        username: "background",
-                        password: "c7C02Ff079cCfB3aEe4c"
+                        username: dbServerInfo.userName,
+                        password: dbServerInfo.passWord
                     });
 
                 }).on('data', function(data) {
@@ -104,10 +107,10 @@ router.post('/', function(req, res, next) {
 
             });
         }).connect({
-            host: "115.28.39.52",
+            host: dbsecServerInfo.ip,
             port: 22,
-            username: "frontground",
-            password: "873b9673fdb5f532"
+            username: dbsecServerInfo.userName,
+            password: dbsecServerInfo.passWord
         });
     }else{
         // conn.on('ready', function() {
@@ -123,6 +126,7 @@ router.post('/', function(req, res, next) {
 
                     pidStr = (/pid=(\d+)/).exec(data);
                     if (pidStr == "" || pidStr == null) {
+                        console.log("没有该用户。。。");
                         contentData += data;
                         res.render('task.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});               
                         return;

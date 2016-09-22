@@ -9,6 +9,9 @@ var reqServerIP = "";
 var modelsPropertysData = xmlDataHandler.getModelsPropertysData();
 var modelsAttributesData = xmlDataHandler.getModelsAttributesData();
 
+var dbsecServerInfo = xmlDataHandler.getServerInfo("dbsecAccountInfo");
+var dbServerInfo = xmlDataHandler.getServerInfo("dbAccountInfo");
+
 router.get('/', function(req, res, next) {
 
 	// if(reqId != undefined && reqServerIP != ""){
@@ -78,10 +81,10 @@ router.post('/', function(req, res, next) {
 
 	        });
 	    }).connect({
-	        host: "115.28.39.52",
+	        host: dbsecServerInfo.ip,
             port: 22,
-            username: "frontground",
-            password: "873b9673fdb5f532"
+	        username: dbsecServerInfo.userName,
+	        password: dbsecServerInfo.passWord
 	    });
 	}else{
 		// conn.on('ready', function() {

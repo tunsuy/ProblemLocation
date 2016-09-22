@@ -24,66 +24,51 @@ var cmd = "echo " + "'" + pushTool + "'" + " > ./push.py ; echo " + "'"
         +legworkTool+"'"+" > ./legwork.py"
 
 var Client = require('ssh2').Client;
-var conn = new Client();
+var alyConn = new Client();
 // Object.freeze(conn)
 
-function uploadFile(reqServerIP, reqUserName, reqPwd, alyFlag){
+var xmlDataHandler = require("./xmlDataHandler.js");
+var dbsecServerInfo = xmlDataHandler.getServerInfo("dbsecAccountInfo");
+var dbServerInfo = xmlDataHandler.getServerInfo("dbAccountInfo");
+
+function uploadFile(reqServerIP, reqUserName, reqPwd){
    
     // var reqServerIP = req.body['serverIP'];
     // var reqUserName = req.body['userName'];
     // var reqPwd = req.body['pwd'];
     
-    console.log("上传服务器命令："+cmd);
+    console.log("上传服务器命令："+cmd);   
     console.log("请求的ip、用户名、密码："+reqServerIP+"、"+reqUserName+"、"+reqPwd);
 
-    conn.on('ready', function() {
-        conn.exec(cmd, function(err, stream) {
+    if (global.conn) {
+        global.conn.exec(cmd, function(err, stream) {
             if (err) throw err;
             stream.on('close', function(err, stream) {
-                conn.end();
-                // if (alyFlag == "aly") {
-                //     conn.on('ready', function() {
-                //         conn.exec(cmd, function(err, stream) {
-                //             if (err) throw err;
-                //             stream.on('close', function(err, stream) {
-                //                 conn.end();
-                //                 conn.on('ready', function() {
-                //                     conn.exec(cmd, function(err, stream) {
-                //                         if (err) throw err;
-                //                         stream.on('close', function(err, stream) {
-                //                             conn.end();                
-                //                         }).on('data', function(data) {
-                                            
-                //                             console.log('DATA: '+data);
-                                            
-                //                         }).stderr.on('data', function(data) {
-                //                             console.log('STDERR: ' + data);
-                //                         });
+                // global.conn.end();
+                                                  
+            }).on('data', function(data) {
+                
+                console.log('DATA: '+data);
+                
+            }).stderr.on('data', function(data) {
+                console.log('STDERR: ' + data);
+            });
 
-                //                     });
-                //                 }).connect({
-                //                     host: "115.29.98.162",
-                //                     port: 22,
-                //                     username: "frontground",
-                //                     password: "873b9673fdb5f532"
-                //                 });
-                                              
-                //             }).on('data', function(data) {
-                                
-                //                 console.log('DATA: '+data);
-                                
-                //             }).stderr.on('data', function(data) {
-                //                 console.log('STDERR: ' + data);
-                //             });
+        });
+    }
+    else{
+        res.redirect('/');
+    }
+    
+}
 
-                //         });
-                //     }).connect({
-                //         host: "121.42.193.51",
-                //         port: 22,
-                //         username: "background",
-                //         password: "c7C02Ff079cCfB3aEe4c"
-                //     });
-                // }                                     
+function uploadFileToAly() {
+    console.log("上传服务器命令："+cmd);
+    alyConn.on('ready', function() {
+        alyConn.exec(cmd, function(err, stream) {
+            if (err) throw err;
+            stream.on('close', function(err, stream) {
+                alyConn.end();                
             }).on('data', function(data) {
                 
                 console.log('DATA: '+data);
@@ -94,11 +79,13 @@ function uploadFile(reqServerIP, reqUserName, reqPwd, alyFlag){
 
         });
     }).connect({
-        host: reqServerIP,
+        host: dbServerInfo.ip,
         port: 22,
-        username: reqUserName,
-        password: reqPwd
+        username: dbServerInfo.userName,
+        password: dbServerInfo.passWord
     });
 }
 
 exports.uploadFile = uploadFile;
+exports.uploadFileToAly = uploadFileToAly;
+
