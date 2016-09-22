@@ -1,0 +1,14 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <server id="dbsecAccountInfo">
+    	<property name="ip">xxxxxxxxx</property>
+        <property name="userName">xxxxxx</property>
+        <property name="passWord">xxxxxx</property>
+    </server>
+
+    <server id="dbAccountInfo">
+    	<property name="ip">xxxxxxxxxx</property>
+        <property name="userName">xxxxxxx</property>
+        <property name="passWord">xxxxxxx</property>
+    </server>
+</root>
+
