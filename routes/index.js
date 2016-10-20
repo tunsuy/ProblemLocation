@@ -83,7 +83,9 @@ router.post('/', function(req, res, next) {
  //    reqDomain.add(res);
  //    reqDomain.run(next);
 
-	var Client = require('ssh2').Client;
+ 	var promise = require('bluebird');
+ 	var ssh2 = promise.promisifyAll(require('ssh2'));
+	var Client = ssh2.Client;
 	global.conn = new Client();
 	global.conn.on('ready', function() {
 		global.conn.exec("ls", function(err, stream) {

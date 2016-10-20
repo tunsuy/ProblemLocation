@@ -1,6 +1,8 @@
 
 var xmlDataHandler = require("../public/javascripts/xmlDataHandler.js");
 var connectServer = require("../public/javascripts/connectServer.js");
+var sshPromise = require("../models/commons/sshPromise.js");
+var info = require("../models/commons/info.js");
 
 var express = require('express');
 var router = express.Router();
@@ -12,187 +14,138 @@ var modelsAttributesData = xmlDataHandler.getModelsAttributesData();
 var dbsecServerInfo = xmlDataHandler.getServerInfo("dbsecAccountInfo");
 var dbServerInfo = xmlDataHandler.getServerInfo("dbAccountInfo");
 
-router.get('/', function(req, res, next) {
+var contentData = "用户的基本信息：\n";
+//Private function
+var gainUserInfoNextCMD = function(data) {
+	console.log("userInfo data: "+data);
+	contentData += ("\n"+data);
+	var userInfo = commonInfo.userInfo(data);
+	if (userInfo.did == "") {
+		res.render('customer.ejs', 
+    		{ modelsAttributes: modelsAttributesData, 
+    			modelsPropertys: modelsPropertysData, 
+    			serverIP: global.reqServerIP, 
+    			account: reqAccount, 
+    			content: contentData
+    		});
+		return;
+	}
+	contentCmd = "python cloudDisk.py "+userInfo.did+" "+reqFileName;
 
-	// var reqServerIP = req.query.id;
-	// if(reqId != undefined && reqServerIP != ""){
-		// var cmdData = questionsData[parseInt(reqId)+2].firstChild.data;
+	return contentCmd;
+}
+
+var putoutToView = function(data) {
+	contentData += ("\n"+data);
+	console.log("返回内容: "+contentData);
+	res.render('customer.ejs', 
+		{ modelsAttributes: modelsAttributesData, 
+			modelsPropertys: modelsPropertysData, 
+			serverIP: global.reqServerIP, 
+			account: reqAccount, 
+			content: contentData
+		});
+	return;
+}
+
+router.get('/', function(req, res, next) {
 	console.log("登录的服务器为："+global.reqServerIP);
 	if (global.reqServerIP) {
-		res.render('cloudDisk.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: "", content: ""});
+		res.render('cloudDisk.ejs', { 
+			modelsAttributes: modelsAttributesData, 
+			modelsPropertys: modelsPropertysData, 
+			serverIP: global.reqServerIP, 
+			account: "", 
+			content: ""
+		});
 	}else{
 		res.redirect('/');
 	}
-	// else{
-	// 	res.render('index.ejs', { modelsPropertys: modelsPropertysPropertysData, questions: questionsData, cmd: cmdData, serverIP: "当前没有登录服务器"});
-	// }
 });
+
+var Promise = require('bluebird');
+
+//promisify、promisifyAll
+//将需要异步的方法promise化
+var commonInfo = info.CommonInfo.createNew();
+commonInfo = Promise.promisifyAll(commonInfo); //遍历该对象所有的方法，方法名后加Async
+
+var sshCallback = sshPromise.Callback.createNew();
+// sshCallback = Promise.promisifyAll(sshCallback);
+
+// global.conn.execAsync = Promise.promisify(global.conn.exec);
 
 router.post('/', function(req, res, next) {
 	reqAccount = req.body['account'];
 	global.accountCache = reqAccount;
 	reqFileName = req.body['fileName'];
-	// var reqServerIP = req.query.id;
-	// var modelsPropertysData = xmlDataHandler.getModelsPropertysData();
-	// var cmdData = connectServer.connServer(reqServerIP,"get_user_info.py "+reqAccount+"\nexit\n");
-	var pid = "", pushMsgCount="", pushUserEventCount="";
-	var contentData = "用户的基本信息：\n";
 	var contentCmd = "get_user_info "+reqAccount;
-	var didStr = "", pidStr = "";
 
-	var Client = require('ssh2').Client;
+	var ssh2 = Promise.promisifyAll(require('ssh2'));
+	var Client = ssh2.Client;
 	var alyConn = new Client();
+	// alyConn.execAsync = Promise.promisify(alyConn.exec);
 
 	if (global.alyFlag == "aly") {
-		for (var index=0; index<modelsPropertysData.length; index++){
-    		if (modelsPropertysData[index][0].firstChild.data == "云盘") {
-    			break;
-    		};
-    	}
 		alyConn.on('ready', function() {
-	        alyConn.exec(contentCmd, function(err, stream) {
-	            if (err) throw err;
-	            stream.on('close', function(err, stream) {
-	                if (didStr == "" || didStr == null) {
-	            		alyConn.end();
-	            	}else{
+			alyConn.execAsync(contentCmd)
+				.spread(sshCallback.execAsync)
+				.then(gainUserInfoNextCMD)
+				.then(function(nextCMD) {
+					alyConn.end();
+					alyConn.on('ready', function() {
+						alyConn.execAsync(nextCMD)
+							.then(sshCallback.execAsync)
+							.then(putoutToView)
+							.catch(function(e){
+								console.log("conn execAsync is err: "+e);
+							})
+							.finally(function() {
+								//todo
+							});
+					}).connect({
+				        host: dbsecServerInfo.ip,
+				        port: 22,
+				        username: dbsecServerInfo.userName,
+				        password: dbsecServerInfo.passWord
+				    });
 
-	            		alyConn.end();
-		                console.log("退出121.42.193.51成功！！！！！！！");
-
-		               alyConn.on('ready', function() {			            	
-			            	
-			            	alyConn.exec(contentCmd, function(err, stream) {
-					            if (err) throw err;
-					            stream.on('close', function(err, stream) {
-					                alyConn.end();
-					            }).on('data', function(data) {
-					            	contentData += "\n\n"
-					            	contentData += data;
-					            	console.log("返回内容: "+contentData);
-					            	res.render('cloudDisk.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});
-					            	return;
-					            }).stderr.on('data', function(data) {
-					                console.log('STDERR: ' + data);
-					            });
-
-					        });
-					            	
-					    }).connect({
-					        host: dbServerInfo.ip,
-					        port: 22,
-					        username: dbServerInfo.userName,
-					        password: dbServerInfo.passWord
-					    });
-					}
-
-	            }).on('data', function(data) {
-
-	            	didStr = (/did=(\d+)/).exec(data);
-	                pidStr = (/pid=(\d+)/).exec(data);
-	                if (didStr == "" || didStr == null) {
-	                    contentData += data;
-	                    res.render('cloudDisk.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});               
-	                    return;
-	                }
-
-	            	contentData += data;
-	            	did = didStr[1];
-	            	pid = pidStr[1];
-	            	console.log("did: "+did);
-	            	console.log("pid: "+pid);
-
-	            	contentCmd = "python cloudDisk.py "+did+" "+reqFileName;
-	                
-	            }).stderr.on('data', function(data) {
-	                console.log('STDERR: ' + data);
-	            });
-
-	        });
-	    }).connect({
+				})
+				.catch(function(e){
+					console.log("conn execAsync is err: "+e);
+				})
+				.finally(function() {
+					//todo
+				});
+		}).connect({
 	        host: dbsecServerInfo.ip,
 	        port: 22,
 	        username: dbsecServerInfo.userName,
 	        password: dbsecServerInfo.passWord
 	    });
-	}else{
-		// conn.on('ready', function() {
-		if (global.conn) {
-	        global.conn.exec(contentCmd, function(err, stream) {
-	            if (err) throw err;
-	            stream.on('close', function(err, stream) {
-	            	if (didStr == "" || didStr == null) {
-	            		// global.conn.end();
-	            	}
-	                // conn.end();
-	            }).on('data', function(data) {
 
-	            	didStr = (/did=(\d+)/).exec(data);
-	                pidStr = (/pid=(\d+)/).exec(data);
-	                if (didStr == "" || didStr == null) {
-	                    contentData += data;
-	                    res.render('cloudDisk.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});               
-	                    return;
-	                }
-
-	            	contentData += data;
-	            	did = didStr[1];
-	            	pid = pidStr[1];
-	            	console.log("did: "+did);
-	            	console.log("pid: "+pid);
-
-	            	contentCmd = "python cloudDisk.py "+did+" "+reqFileName;
-
-	            	global.conn.exec(contentCmd, function(err, stream) {
-			            if (err) throw err;
-			            stream.on('close', function(err, stream) {
-			                // conn.end();
-			            }).on('data', function(data) {
-			            	
-			            	contentData += "\n\n"
-			            	contentData += data;
-			            	console.log("返回内容: "+contentData);
-			            	res.render('cloudDisk.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});
-			            	
-			            }).stderr.on('data', function(data) {
-			                console.log('STDERR: ' + data);
-			            });
-
-			        });
-	                
-	            }).stderr.on('data', function(data) {
-	                console.log('STDERR: ' + data);
-	            });
-
-	        });
-		}else{
-			res.redirect('/');
-		}
-	    // }).connect({
-	    //     host: global.reqServerIP,
-	    //     port: 22,
-	    //     username: global.reqUserName,
-	    //     password: global.reqPwd
-	    // });
 	}
+	if (!global.conn) {
+		res.redirect('/');
+	}
+	global.conn.execAsync(contentCmd)
+		.then(sshCallback.execAsync)
+		.then(gainUserInfoNextCMD)
+		.then(function(nextCMD){
+			console.log("nextCMD: "+nextCMD);
+			return global.conn.execAsync(nextCMD);
+		})
+		.then(sshCallback.execAsync)
+		.then(putoutToView)
+		.then(sshCallback.stderrAsync)
+		.catch(function(e){
+			console.log("conn execAsync is err: "+e);
+
+		})
+		.finally(function() {
+			//todo
+		});
 	
-
-	// console.log("cmdData: "+cmdData);
-	// var modelsPropertysData = xmlDataHandler.getmodelsPropertysData();
-	// var questionsData = xmlDataHandler.getQuestionsData();
-	// var reqId = req.query.id;
-	// console.log(reqId);
-	// if(reqId != undefined){
-	// 	var cmdData = questionsData[parseInt(reqId)+2].firstChild.data;
-	// }
-	// var contentData = getFileData("")
-	// res.render('push.ejs', { modelsPropertys: modelsPropertysData, serverIP: reqServerIP, account: reqAccount, content: cmdData});
 });
-
-// function getFileData(fileName){
-// 	var rf=require("fs");
-// 	var contentData=rf.readFileSync(fileName,"utf-8");
-// 	return contentData;
-// }
 
 module.exports = router;

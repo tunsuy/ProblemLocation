@@ -1,0 +1,14 @@
+<root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+    <server id="dbsecAccountInfo">
+    	<property name="ip">115.28.39.52</property>
+        <property name="userName">background</property>
+        <property name="passWord">4A76a3A90b49e1a0b09</property>
+    </server>
+
+    <server id="dbAccountInfo">
+    	<property name="ip">200.200.107.100</property>
+        <property name="userName">frontground</property>
+        <property name="passWord">873b9673fdb5f532</property>
+    </server>
+</root>
+
