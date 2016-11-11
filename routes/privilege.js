@@ -1,203 +1,96 @@
+var LoggerHelper = require("../helper/log4jsHandle.js").LoggerHelper; 
+var loggerHelper = new LoggerHelper('privilege.js');
 
-var xmlDataHandler = require("../public/javascripts/xmlDataHandler.js");
-var connectServer = require("../public/javascripts/connectServer.js");
+var commonHandler = require("../models/coreData/helpClass/commonHandler.js");
+var shareModels = require("../models/coreData/helpClass/shareModels.js");
+var coreOpr = require("../models/coreData/helpClass/coreOperate.js");
 
 var express = require('express');
 var router = express.Router();
-var reqServerIP = "";
 
-var modelsPropertysData = xmlDataHandler.getModelsPropertysData();
-var modelsAttributesData = xmlDataHandler.getModelsAttributesData();
-
-var dbsecServerInfo = xmlDataHandler.getServerInfo("dbsecAccountInfo");
-var dbServerInfo = xmlDataHandler.getServerInfo("dbAccountInfo");
+var routerGet = new commonHandler.RouterGet();
 
 router.get('/', function(req, res, next) {
-
-	// var reqServerIP = req.query.id;
-	// if(reqId != undefined && reqServerIP != ""){
-		// var cmdData = questionsData[parseInt(reqId)+2].firstChild.data;
-	console.log("登录的服务器为："+global.reqServerIP);
-	if (global.reqServerIP) {
-		res.render('privilege.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: "", content: ""});
-	}else{
-		res.redirect('/');
-	}
-	// else{
-	// 	res.render('index.ejs', { modelsPropertys: modelsPropertysPropertysData, questions: questionsData, cmd: cmdData, serverIP: "当前没有登录服务器"});
-	// }
+	loggerHelper.writeInfo("登录的服务器为："+req.session.reqServerIP);
+	routerGet.renderView(req, res, "privilege.ejs");
 });
+
+//实例化公共逻辑-数据收集类
+var collectData = new commonHandler.CollectData();
+
+//来自commonHandler的共享对象
+var userInfo = commonHandler.userInfo;
+
+//实例化模块Conn操作类
+var moduleInfo = new coreOpr.Info();
+
+//获取下一步操作的命令
+var nextCMDFromUserInfo = function(req, userOprInfo, userBaseInfo, callback) {
+	var lookPermitFlag = (userOprInfo.get().reqLookPermitFlag == "on")?1:0;
+    var notifyPermitFlag = (userOprInfo.get().reqNotifyPermitFlag == "on")?1:0;
+    var permitAllocationFlag = (userOprInfo.get().reqPermitAllocationFlag == "on")?1:0;
+
+	var nextCMD = "python privilege.py "+userBaseInfo.did+" "+userBaseInfo.pid+
+		" "+lookPermitFlag+" "+notifyPermitFlag+" "+permitAllocationFlag;
+
+	loggerHelper.writeInfo("nextCMD: "+nextCMD);
+
+	collectData.cbNextCMDFromUserInfo(req, nextCMD, callback);
+}
 
 router.post('/', function(req, res, next) {
-	reqAccount = req.body['account'];
-	global.accountCache = reqAccount;
-	reqLookPermitFlag = req.body['lookPermitFlag']
-	reqNotifyPermitFlag = req.body['notifyPermitFlag']
-	reqPermitAllocationFlag = req.body['permitAllocationFlag']
-	// var reqServerIP = req.query.id;
-	// var modelsPropertysData = xmlDataHandler.getModelsPropertysData();
-	// var cmdData = connectServer.connServer(reqServerIP,"get_user_info.py "+reqAccount+"\nexit\n");
-	var pid = "", pushMsgCount="", pushUserEventCount="";
-	var contentData = "用户的基本信息：\n";
-	var contentCmd = "get_user_info "+reqAccount;
-	var didStr = "", pidStr = "";
-
-	var Client = require('ssh2').Client;
-	var alyConn = new Client();
-
-	if (global.alyFlag == "aly") {
-		alyConn.on('ready', function() {
-	        alyConn.exec(contentCmd, function(err, stream) {
-	            if (err) throw err;
-	            stream.on('close', function(err, stream) {
-	                if (didStr == "" || didStr == null) {
-	            		alyConn.end();
-	            	}else{
-
-	            		alyConn.end();
-		                console.log("退出121.42.193.51成功！！！！！！！");
-
-		               alyConn.on('ready', function() {			            	
-			            	
-			            	alyConn.exec(contentCmd, function(err, stream) {
-					            if (err) throw err;
-					            stream.on('close', function(err, stream) {
-					                alyConn.end();
-					            }).on('data', function(data) {
-					            	contentData += "\n\n"
-					            	contentData += data;
-					            	console.log("返回内容: "+contentData);
-					            	res.render('privilege.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});
-					            	return;
-					            }).stderr.on('data', function(data) {
-					                console.log('STDERR: ' + data);
-					            });
-
-					        });
-					            	
-					    }).connect({
-							host: dbServerInfo.ip,
-					        port: 22,
-					        username: dbServerInfo.userName,
-					        password: dbServerInfo.passWord
-					    });
-					}
-
-	            }).on('data', function(data) {
-
-	            	didStr = (/did=(\d+)/).exec(data);
-	                pidStr = (/pid=(\d+)/).exec(data);
-	                if (didStr == "" || didStr == null) {
-	                    contentData += data;
-	                    res.render('privilege.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});               
-	                    return;
-	                }
-
-	                lookPermitFlag = (reqLookPermitFlag == "on")?1:0;
-	                notifyPermitFlag = (reqNotifyPermitFlag == "on")?1:0;
-	                permitAllocationFlag = (reqPermitAllocationFlag == "on")?1:0;
-
-	            	contentData += data;
-	            	did = didStr[1];
-	            	pid = pidStr[1];
-	            	console.log("did: "+did);
-	            	console.log("pid: "+pid);
-
-	            	contentCmd = "python privilege.py "+did+" "+pid+" "+lookPermitFlag+" "+notifyPermitFlag+" "+permitAllocationFlag;
-	                
-	            }).stderr.on('data', function(data) {
-	                console.log('STDERR: ' + data);
-	            });
-
-	        });
-	    }).connect({
-	        host: dbsecServerInfo.ip,
-	        port: 22,
-	        username: dbsecServerInfo.userName,
-	        password: dbsecServerInfo.passWord
-	    });
-	}else{
-		// conn.on('ready', function() {
-		if (global.conn) {
-	        global.conn.exec(contentCmd, function(err, stream) {
-	            if (err) throw err;
-	            stream.on('close', function(err, stream) {
-	            	if (didStr == "" || didStr == null) {
-	            		// global.conn.end();
-	            	}
-	                // conn.end();
-	            }).on('data', function(data) {
-
-	            	didStr = (/did=(\d+)/).exec(data);
-	                pidStr = (/pid=(\d+)/).exec(data);
-	                if (didStr == "" || didStr == null) {
-	                    contentData += data;
-	                    res.render('privilege.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});               
-	                    return;
-	                }
-
-	                lookPermitFlag = (reqLookPermitFlag == "on")?1:0;
-	                notifyPermitFlag = (reqNotifyPermitFlag == "on")?1:0;
-	                permitAllocationFlag = (reqPermitAllocationFlag == "on")?1:0;
-
-	            	contentData += data;
-	            	did = didStr[1];
-	            	pid = pidStr[1];
-	            	console.log("did: "+did);
-	            	console.log("pid: "+pid);
-
-	            	contentCmd = "python privilege.py "+did+" "+pid+" "+lookPermitFlag+" "+notifyPermitFlag+" "+permitAllocationFlag;
-
-	            	global.conn.exec(contentCmd, function(err, stream) {
-			            if (err) throw err;
-			            stream.on('close', function(err, stream) {
-			                // conn.end();
-			            }).on('data', function(data) {
-			            	
-			            	contentData += "\n\n"
-			            	contentData += data;
-			            	console.log("返回内容: "+contentData);
-			            	res.render('privilege.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});
-			            	
-			            }).stderr.on('data', function(data) {
-			                console.log('STDERR: ' + data);
-			            });
-
-			        });
-	                
-	            }).stderr.on('data', function(data) {
-	                console.log('STDERR: ' + data);
-	            });
-
-	        });
-		}else{
-			res.redirect('/');
-		}
-	    // }).connect({
-	    //     host: global.reqServerIP,
-	    //     port: 22,
-	    //     username: global.reqUserName,
-	    //     password: global.reqPwd
-	    // });
-	}
+	var reqAccount = req.body['account'];
+	var reqLookPermitFlag = req.body['lookPermitFlag']
+	var reqNotifyPermitFlag = req.body['notifyPermitFlag']
+	var reqPermitAllocationFlag = req.body['permitAllocationFlag']
 	
+	//实例化用户操作类
+	var userOprInfo = new shareModels.UserOprInfo();
+	userOprInfo.set({
+		reqAccount: reqAccount,
+		reqLookPermitFlag: reqLookPermitFlag,
+		reqNotifyPermitFlag: reqNotifyPermitFlag,
+		reqPermitAllocationFlag: reqPermitAllocationFlag
+	});
 
-	// console.log("cmdData: "+cmdData);
-	// var modelsPropertysData = xmlDataHandler.getmodelsPropertysData();
-	// var questionsData = xmlDataHandler.getQuestionsData();
-	// var reqId = req.query.id;
-	// console.log(reqId);
-	// if(reqId != undefined){
-	// 	var cmdData = questionsData[parseInt(reqId)+2].firstChild.data;
-	// }
-	// var contentData = getFileData("")
-	// res.render('push.ejs', { modelsPropertys: modelsPropertysData, serverIP: reqServerIP, account: reqAccount, content: cmdData});
+	var callbackArr;
+
+	if (req.session.alyFlag == "aly") {
+		//针对aly服务器
+		callbackArr = [
+			function(callback) {
+				collectData.firstCMD(req, userOprInfo, callback);
+			},
+			userInfo.streamOpr,
+			collectData.addUserInfo,
+			userInfo.getBase,
+			nextCMDFromUserInfo,
+			collectData.changeServer,
+			moduleInfo.streamOpr
+		];
+
+		collectData.alyAsyncHandler(userOprInfo, callbackArr, req, res, "privilege.ejs");
+	}
+	else if (!req.session.conn) {
+		res.redirect('/');
+	}
+	else {
+		//针对普通服务器
+		callbackArr = [
+			function(callback) {
+				collectData.firstCMD(userOprInfo, callback);
+			},
+			userInfo.streamOpr,
+			collectData.addUserInfo,
+			userInfo.getBase,
+			nextCMDFromUserInfo,
+			moduleInfo.connExec,
+			moduleInfo.streamOpr
+		];
+		
+		asyncHandler(userOprInfo, callbackArr, req, res, "privilege.ejs");
+	}
+
 });
-
-// function getFileData(fileName){
-// 	var rf=require("fs");
-// 	var contentData=rf.readFileSync(fileName,"utf-8");
-// 	return contentData;
-// }
 
 module.exports = router;

@@ -1,151 +1,86 @@
+var LoggerHelper = require("../helper/log4jsHandle.js").LoggerHelper; 
+var loggerHelper = new LoggerHelper('cloudDisk.js');
 
-var xmlDataHandler = require("../public/javascripts/xmlDataHandler.js");
-var connectServer = require("../public/javascripts/connectServer.js");
-var sshPromise = require("../models/commons/sshPromise.js");
-var info = require("../models/commons/info.js");
+var commonHandler = require("../models/coreData/helpClass/commonHandler.js");
+var shareModels = require("../models/coreData/helpClass/shareModels.js");
+var coreOpr = require("../models/coreData/helpClass/coreOperate.js");
 
 var express = require('express');
 var router = express.Router();
-var reqServerIP = "";
 
-var modelsPropertysData = xmlDataHandler.getModelsPropertysData();
-var modelsAttributesData = xmlDataHandler.getModelsAttributesData();
-
-var dbsecServerInfo = xmlDataHandler.getServerInfo("dbsecAccountInfo");
-var dbServerInfo = xmlDataHandler.getServerInfo("dbAccountInfo");
-
-var contentData = "用户的基本信息：\n";
-//Private function
-var gainUserInfoNextCMD = function(data) {
-	console.log("userInfo data: "+data);
-	contentData += ("\n"+data);
-	var userInfo = commonInfo.userInfo(data);
-	if (userInfo.did == "") {
-		res.render('customer.ejs', 
-    		{ modelsAttributes: modelsAttributesData, 
-    			modelsPropertys: modelsPropertysData, 
-    			serverIP: global.reqServerIP, 
-    			account: reqAccount, 
-    			content: contentData
-    		});
-		return;
-	}
-	contentCmd = "python cloudDisk.py "+userInfo.did+" "+reqFileName;
-
-	return contentCmd;
-}
-
-var putoutToView = function(data) {
-	contentData += ("\n"+data);
-	console.log("返回内容: "+contentData);
-	res.render('customer.ejs', 
-		{ modelsAttributes: modelsAttributesData, 
-			modelsPropertys: modelsPropertysData, 
-			serverIP: global.reqServerIP, 
-			account: reqAccount, 
-			content: contentData
-		});
-	return;
-}
+var routerGet = new commonHandler.RouterGet();
 
 router.get('/', function(req, res, next) {
-	console.log("登录的服务器为："+global.reqServerIP);
-	if (global.reqServerIP) {
-		res.render('cloudDisk.ejs', { 
-			modelsAttributes: modelsAttributesData, 
-			modelsPropertys: modelsPropertysData, 
-			serverIP: global.reqServerIP, 
-			account: "", 
-			content: ""
-		});
-	}else{
-		res.redirect('/');
-	}
+	loggerHelper.writeInfo("登录的服务器为："+req.session.reqServerIP);
+	routerGet.renderView(req, res, "cloudDisk.ejs");
 });
 
-var Promise = require('bluebird');
+//实例化公共逻辑-数据收集类
+var collectData = new commonHandler.CollectData();
 
-//promisify、promisifyAll
-//将需要异步的方法promise化
-var commonInfo = info.CommonInfo.createNew();
-commonInfo = Promise.promisifyAll(commonInfo); //遍历该对象所有的方法，方法名后加Async
+//来自commonHandler的共享对象
+var userInfo = commonHandler.userInfo;
 
-var sshCallback = sshPromise.Callback.createNew();
-// sshCallback = Promise.promisifyAll(sshCallback);
+//实例化模块Conn操作类
+var moduleInfo = new coreOpr.Info();
 
-// global.conn.execAsync = Promise.promisify(global.conn.exec);
+//获取下一步操作的命令
+var nextCMDFromUserInfo = function(req, userOprInfo, userBaseInfo, callback) {
+	var nextCMD = "python cloudDisk.py "+userBaseInfo.did+" "+userOprInfo.get().reqFileName;
+	loggerHelper.writeInfo("nextCMD: "+nextCMD);
+
+	collectData.cbNextCMDFromUserInfo(req, nextCMD, callback);
+}
 
 router.post('/', function(req, res, next) {
-	reqAccount = req.body['account'];
+	var reqAccount = req.body['account'];
 	global.accountCache = reqAccount;
-	reqFileName = req.body['fileName'];
-	var contentCmd = "get_user_info "+reqAccount;
+	var reqFileName = req.body['fileName'];
 
-	var ssh2 = Promise.promisifyAll(require('ssh2'));
-	var Client = ssh2.Client;
-	var alyConn = new Client();
-	// alyConn.execAsync = Promise.promisify(alyConn.exec);
+	//实例化用户操作类
+	var userOprInfo = new shareModels.UserOprInfo();
+	userOprInfo.set({
+		reqAccount: reqAccount,
+		reqFileName: reqFileName
+	});
 
-	if (global.alyFlag == "aly") {
-		alyConn.on('ready', function() {
-			alyConn.execAsync(contentCmd)
-				.spread(sshCallback.execAsync)
-				.then(gainUserInfoNextCMD)
-				.then(function(nextCMD) {
-					alyConn.end();
-					alyConn.on('ready', function() {
-						alyConn.execAsync(nextCMD)
-							.then(sshCallback.execAsync)
-							.then(putoutToView)
-							.catch(function(e){
-								console.log("conn execAsync is err: "+e);
-							})
-							.finally(function() {
-								//todo
-							});
-					}).connect({
-				        host: dbsecServerInfo.ip,
-				        port: 22,
-				        username: dbsecServerInfo.userName,
-				        password: dbsecServerInfo.passWord
-				    });
+	var callbackArr;
 
-				})
-				.catch(function(e){
-					console.log("conn execAsync is err: "+e);
-				})
-				.finally(function() {
-					//todo
-				});
-		}).connect({
-	        host: dbsecServerInfo.ip,
-	        port: 22,
-	        username: dbsecServerInfo.userName,
-	        password: dbsecServerInfo.passWord
-	    });
+	if (req.session.alyFlag == "aly") {
+		//针对aly服务器
+		callbackArr = [
+			function(callback) {
+				collectData.firstCMD(req, userOprInfo, callback);
+			},
+			userInfo.streamOpr,
+			collectData.addUserInfo,
+			userInfo.getBase,
+			nextCMDFromUserInfo,
+			collectData.changeServer,
+			moduleInfo.streamOpr
+		];
 
+		collectData.alyAsyncHandler(userOprInfo, callbackArr, req, res, "cloudDisk.ejs");
 	}
-	if (!global.conn) {
+	else if (!req.session.conn) {
 		res.redirect('/');
 	}
-	global.conn.execAsync(contentCmd)
-		.then(sshCallback.execAsync)
-		.then(gainUserInfoNextCMD)
-		.then(function(nextCMD){
-			console.log("nextCMD: "+nextCMD);
-			return global.conn.execAsync(nextCMD);
-		})
-		.then(sshCallback.execAsync)
-		.then(putoutToView)
-		.then(sshCallback.stderrAsync)
-		.catch(function(e){
-			console.log("conn execAsync is err: "+e);
-
-		})
-		.finally(function() {
-			//todo
-		});
-	
+	else {
+		//针对普通服务器
+		callbackArr = [
+			function(callback) {
+				collectData.firstCMD(req, userOprInfo, callback);
+			},
+			userInfo.streamOpr,
+			collectData.addUserInfo,
+			userInfo.getBase,
+			nextCMDFromUserInfo,
+			moduleInfo.connExec,
+			moduleInfo.streamOpr
+		];
+		
+		asyncHandler(userOprInfo, callbackArr, req, res, "cloudDisk.ejs");
+	}
 });
 
 module.exports = router;

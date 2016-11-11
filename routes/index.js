@@ -1,53 +1,42 @@
+var LoggerHelper = require("../helper/log4jsHandle.js").LoggerHelper; 
+var loggerHelper = new LoggerHelper('index.js');
 
-var xmlDataHandler = require("../public/javascripts/xmlDataHandler.js");
 var connectServer = require("../public/javascripts/connectServer.js");
 var uploadToolFile = require("../public/javascripts/uploadToolFile.js");
 
 var express = require('express');
-// var session = require('express-session');
 var router = express.Router();
-var reqServerIP = "";
-global.accountCache = ""
 
 var domain = require('domain');
 
 // session({errInfo: "用户名或者密码错误"});
 
-
-var modelsPropertysData = xmlDataHandler.getModelsPropertysData();
-var modelsAttributesData = xmlDataHandler.getModelsAttributesData();
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
-	// var questionsData = xmlDataHandler.getQuestionsData();
-	// var reqId = req.query.id;
-	// console.log(reqId);
-
-	global.alyFlag = req.query.id;
-	if (global.alyFlag == "aly") {
-		global.reqServerIP = "阿里云";
+	req.session.alyFlag = req.query.id;
+	if (req.session.alyFlag == "aly") {
+		req.session.reqServerIP = "阿里云";
 	}
-	console.log("登录的服务器为："+global.reqServerIP);
-	if(global.reqServerIP){
-		console.log("开始执行uploadFile:------");
-		uploadToolFile.uploadFileToAly();
-		res.render('index.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP});
+	loggerHelper.writeInfo("登录的服务器为："+req.session.reqServerIP);
+	if(req.session.reqServerIP){
+		uploadToolFile.toAly(req, res);
 	}
 	else{
-		// res.render('index.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: "当前没有登录服务器"});
 		res.redirect('/');
 	}
 });
 
 router.post('/', function(req, res, next) {
+	req.session.reqServerIP = req.body['serverIP'];
+	req.session.reqUserName = req.body['userName'];
+	req.session.reqPwd = req.body['pwd'];
 
-	global.reqServerIP = req.body['serverIP'];
-	global.reqUserName = req.body['userName'];
-	global.reqPwd = req.body['pwd'];
-	console.log("serverIP:"+global.reqServerIP);
-	// connectServer.connServer(reqServerIP,"");
-	console.log('-----------------------');
+	var ssh2 = require('ssh2');
+    var Client = ssh2.Client;
+    req.session.conn = new Client();
+
+    uploadToolFile.toNomal(req, res);
+
 
 	// var session = req.session;
 	// console.log("session-err:    "+session.errInfo);
@@ -83,35 +72,6 @@ router.post('/', function(req, res, next) {
  //    reqDomain.add(res);
  //    reqDomain.run(next);
 
- 	var promise = require('bluebird');
- 	var ssh2 = promise.promisifyAll(require('ssh2'));
-	var Client = ssh2.Client;
-	global.conn = new Client();
-	global.conn.on('ready', function() {
-		global.conn.exec("ls", function(err, stream) {
-            if (err){ 
-            	throw err;
-            	return;
-        	}
-            stream.on('close', function(err, stream) {
-                 // conn.end();
-            }).on('data', function(data) {
-            	console.log("登录正确！！！！！！！！");
-            	console.log("开始执行uploadFile:------");
-				uploadToolFile.uploadFile(global.reqServerIP, global.reqUserName, global.reqPwd);
-                res.render('index.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP});
-                
-            }).stderr.on('data', function(data) {
-                console.log('STDERR: ' + data);
-            });
-        });
-        
-    }).connect({
-        host: global.reqServerIP,
-        port: 22,
-        username: global.reqUserName,
-        password: global.reqPwd
-    });
 	
 	// process.on('uncaughtException', function (err) {
 	// 	//打印出错误
@@ -126,7 +86,7 @@ router.post('/', function(req, res, next) {
 	
 	// uncaughtException 避免程序崩溃
 	process.on('uncaughtException', function (err) {
-	    console.log(err);
+	    loggerHelper.writeErr(err);
 
 	    try {
 	        // var killTimer = setTimeout(function () {
@@ -135,12 +95,12 @@ router.post('/', function(req, res, next) {
 	        // killTimer.unref();
 	        // console.log("路径："+req.path);
 
-	        console.log("登录失败exce！！！！！！！！");
+	        loggerHelper.writeErr("登录失败exce！！！！！！！！");
 	        res.render('login.ejs', {errInfo: "用户名或者密码错误"});
 		  	// res.redirect('/');
-	        global.conn.end();
+	        req.session.conn.end();
 	    } catch (e) {
-	        console.log('error when exit', e.stack);
+	        loggerHelper.writeErr('error when exit', e.stack);
 	    }
 	});
 

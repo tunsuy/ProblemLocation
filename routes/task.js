@@ -1,182 +1,102 @@
+var LoggerHelper = require("../helper/log4jsHandle.js").LoggerHelper; 
+var loggerHelper = new LoggerHelper('task.js');
 
+var commonHandler = require("../models/coreData/helpClass/commonHandler.js");
+var shareModels = require("../models/coreData/helpClass/shareModels.js");
 var xmlDataHandler = require("../public/javascripts/xmlDataHandler.js");
-var connectServer = require("../public/javascripts/connectServer.js");
+var coreOpr = require("../models/coreData/helpClass/coreOperate.js");
 
 var express = require('express');
 var router = express.Router();
-var reqServerIP = "";
 
-var modelsPropertysData = xmlDataHandler.getModelsPropertysData();
-var modelsAttributesData = xmlDataHandler.getModelsAttributesData();
-
-var dbsecServerInfo = xmlDataHandler.getServerInfo("dbsecAccountInfo");
-var dbServerInfo = xmlDataHandler.getServerInfo("dbAccountInfo");
+var routerGet = new commonHandler.RouterGet();
 
 router.get('/', function(req, res, next) {
-
-	// var reqServerIP = req.query.id;
-	// if(reqId != undefined && reqServerIP != ""){
-		// var cmdData = questionsData[parseInt(reqId)+2].firstChild.data;
-    console.log("登录的服务器为："+global.reqServerIP);
-    if (global.reqServerIP) {
-		res.render('task.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: "", content: ""});
-	}else{
-        res.redirect('/');
-    }
-	// else{
-	// 	res.render('index.ejs', { modelsPropertys: modelsPropertysPropertysData, questions: questionsData, cmd: cmdData, serverIP: "当前没有登录服务器"});
-	// }
+    loggerHelper.writeInfo("登录的服务器为："+req.session.reqServerIP);
+    routerGet.renderView(req, res, "task.ejs");
 });
 
-router.post('/', function(req, res, next) {
-	var reqServerIP = req.query.id;
+//实例化公共逻辑-数据收集类
+var collectData = new commonHandler.CollectData();
 
+//来自commonHandler的共享对象
+var userInfo = commonHandler.userInfo;
+
+//实例化模块Conn操作类
+var moduleInfo = new coreOpr.Info();
+
+//获取XML文档数据
+var modelsPropertysData = xmlDataHandler.getModelsPropertysData();
+
+//获取下一步操作的命令
+var nextCMDFromUserInfo = function(req, userOprInfo, userBaseInfo, callback) {
+    var sendTaskNum, receiveTaskNum;
+    for (var index=0; index<modelsPropertysData.length; index++){
+        if (modelsPropertysData[index][0].firstChild.data == "任务") {
+            sendTaskNum = modelsPropertysData[index][1].firstChild.data;
+            receiveTaskNum = modelsPropertysData[index][2].firstChild.data;
+            break;
+        };
+    }
+    sendTaskNum = (userOprInfo.get().sendTask == "on")?sendTaskNum:0;
+    receiveTaskNum = (userOprInfo.get().receiveTask == "on")?receiveTaskNum:0;
+
+    var nextCMD = "python task.py "+userBaseInfo.pid+" "+sendTaskNum+" "+receiveTaskNum;
+    loggerHelper.writeInfo("nextCMD: "+nextCMD);
+
+    collectData.cbNextCMDFromUserInfo(req, nextCMD, callback);
+}
+
+router.post('/', function(req, res, next) {
 	var reqAccount = req.body['account'];
     global.accountCache = reqAccount;
 	var sendTask = req.body['sendTask'];
 	var receiveTask = req.body['receiveTask'];
 
-	var pid = "", sendTaskNum = "", receiveTaskNum = "";
-	var contentData = "用户的基本信息：\n";
-	var contentCmd = "get_user_info "+reqAccount;
-    var pidStr = "";
+    //实例化用户操作类
+    var userOprInfo = new shareModels.UserOprInfo();
+    userOprInfo.set({
+        reqAccount: reqAccount,
+        sendTask: sendTask,
+        receiveTask: receiveTask
+    });
 
-	var Client = require('ssh2').Client;
-	var alyConn = new Client();
-    if (global.alyFlag == "aly") {
-        alyConn.on('ready', function() {
-            alyConn.exec(contentCmd, function(err, stream) {
-                if (err) throw err;
-                stream.on('close', function(err, stream) {
-                    
-                    alyConn.end();
-                    console.log("退出121.42.193.51成功！！！！！！！");
+    var callbackArr;
 
-                    alyConn.on('ready', function() {                               
-                        alyConn.exec(contentCmd, function(err, stream) {
-                            if (err) throw err;
-                            stream.on('close', function(err, stream) {
-                                alyConn.end();
-                            }).on('data', function(data) {
-                                contentData += "\n"
-                                contentData += data;
-                                console.log("返回内容: "+contentData);
-                                res.render('task.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});
-                                return;
-                            }).stderr.on('data', function(data) {
-                                console.log('STDERR: ' + data);
-                            });
+    if (req.session.alyFlag == "aly") {
+        //针对aly服务器
+        callbackArr = [
+            function(callback) {
+                collectData.firstCMD(req, userOprInfo, callback);
+            },
+            userInfo.streamOpr,
+            collectData.addUserInfo,
+            userInfo.getBase,
+            nextCMDFromUserInfo,
+            collectData.changeServer,
+            moduleInfo.streamOpr
+        ];
 
-                        });
-
-                    }).connect({
-                        host: dbServerInfo.ip,
-                        port: 22,
-                        username: dbServerInfo.userName,
-                        password: dbServerInfo.passWord
-                    });
-
-                }).on('data', function(data) {
-
-                    pidStr = (/pid=(\d+)/).exec(data);
-                    if (pidStr == "" || pidStr == null) {
-                        contentData += data;
-                        res.render('task.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});               
-                        return;
-                    }
-
-                    for (var index=0; index<modelsPropertysData.length; index++){
-                        if (modelsPropertysData[index][0].firstChild.data == "任务") {
-                            sendTaskNum = modelsPropertysData[index][1].firstChild.data;
-                            receiveTaskNum = modelsPropertysData[index][2].firstChild.data;
-                            break;
-                        };
-                    }
-                    sendTaskNum = (sendTask == "on")?sendTaskNum:0;
-                    receiveTaskNum = (receiveTask == "on")?receiveTaskNum:0;
-
-                    contentData += data
-                    pid = pidStr[1];
-                    console.log("pid: "+pid);
-
-                    contentCmd = "python task.py "+pid+" "+sendTaskNum+" "+receiveTaskNum;
-                    
-                }).stderr.on('data', function(data) {
-                    console.log('STDERR: ' + data);
-                });
-
-            });
-        }).connect({
-            host: dbsecServerInfo.ip,
-            port: 22,
-            username: dbsecServerInfo.userName,
-            password: dbsecServerInfo.passWord
-        });
-    }else{
-        // conn.on('ready', function() {
-        if (global.conn) {
-            global.conn.exec(contentCmd, function(err, stream) {
-                if (err) throw err;
-                stream.on('close', function(err, stream) {
-                    if (pidStr == "" || pidStr == null) {
-                        // global.conn.end();
-                    }
-                    // conn.end();
-                }).on('data', function(data) {
-
-                    pidStr = (/pid=(\d+)/).exec(data);
-                    if (pidStr == "" || pidStr == null) {
-                        console.log("没有该用户。。。");
-                        contentData += data;
-                        res.render('task.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});               
-                        return;
-                    }
-
-                    for (var index=0; index<modelsPropertysData.length; index++){
-                        if (modelsPropertysData[index][0].firstChild.data == "任务") {
-                            sendTaskNum = modelsPropertysData[index][1].firstChild.data;
-                            receiveTaskNum = modelsPropertysData[index][2].firstChild.data;
-                            break;
-                        };
-                    }
-                    sendTaskNum = (sendTask == "on")?sendTaskNum:0;
-                    receiveTaskNum = (receiveTask == "on")?receiveTaskNum:0;
-
-                    contentData += data
-                    pid = pidStr[1];
-                    console.log("pid: "+pid);
-
-                    contentCmd = "python task.py "+pid+" "+sendTaskNum+" "+receiveTaskNum;
-
-                    global.conn.exec(contentCmd, function(err, stream) {
-                        if (err) throw err;
-                        stream.on('close', function(err, stream) {
-                            // global.conn.end();
-                        }).on('data', function(data) {
-                            contentData += "\n"
-                            contentData += data;
-                            console.log("返回内容: "+contentData);
-                            res.render('task.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: reqAccount, content: contentData});
-                        }).stderr.on('data', function(data) {
-                            console.log('STDERR: ' + data);
-                        });
-
-                    });
-                    
-                }).stderr.on('data', function(data) {
-                    console.log('STDERR: ' + data);
-                });
-
-            });
-        }else{
-            res.redirect('/');
-        }
-        // }).connect({
-        //     host: global.reqServerIP,
-        //     port: 22,
-        //     username: global.reqUserName,
-        //     password: global.reqPwd
-        // });
+        collectData.alyAsyncHandler(userOprInfo, callbackArr, req, res, "task.ejs");
+    }
+    else if (!req.session.conn) {
+        res.redirect('/');
+    }
+    else {
+        //针对普通服务器
+        callbackArr = [
+            function(callback) {
+                collectData.firstCMD(userOprInfo, callback);
+            },
+            userInfo.streamOpr,
+            collectData.addUserInfo,
+            userInfo.getBase,
+            nextCMDFromUserInfo,
+            moduleInfo.connExec,
+            moduleInfo.streamOpr
+        ];
+        
+        asyncHandler(userOprInfo, callbackArr, req, res, "task.ejs");
     }
     
 });

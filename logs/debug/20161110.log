@@ -1,0 +1,80 @@
+[2016-11-10 20:20:49.300] [ERROR] console - invalid document source 
+@#[line:0,col:undefined]
+[2016-11-10 20:21:38.467] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-10 20:21:39.319] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-10 20:21:40.080] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET /favicon.ico HTTP/1.1" 404 1007 "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-10 20:21:44.145] [INFO] legwork.js - 登录的服务器为：阿里云
+[2016-11-10 20:21:50.562] [INFO] legwork.js - aly 连接成功...
+[2016-11-10 20:21:50.563] [INFO] legwork.js - 开始验证是否登录成功
+[2016-11-10 20:21:50.568] [INFO] legwork.js - 执行任意一个命令来验证
+[2016-11-10 20:21:50.568] [INFO] console - 开始执行命令...
+[2016-11-10 20:21:50.709] [INFO] console - 获取数据流...
+[2016-11-10 20:21:50.772] [INFO] console - 获取的数据： <Buffer 63 68 65 63 6b 69 6e 67 2e 2e 2e 0a>
+[2016-11-10 20:21:50.775] [INFO] legwork.js - 登录正确！！！！！！！！
+[2016-11-10 20:21:50.775] [INFO] legwork.js - 开始执行uploadFile:------
+[2016-11-10 20:21:50.775] [INFO] console - 开始执行命令...
+[2016-11-10 20:21:50.792] [INFO] console - 获取数据流...
+[2016-11-10 20:21:50.861] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-10 20:21:50.864] [INFO] legwork.js - 开始执行async最后的回调处理...
+[2016-11-10 20:21:50.865] [INFO] legwork.js - 输出内容到view层...
+[2016-11-10 20:21:50.900] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET /index?id=aly HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-10 20:21:52.461] [INFO] legwork.js - 登录的服务器为：阿里云
+[2016-11-10 20:21:52.737] [INFO] legwork.js - aly 连接成功...
+[2016-11-10 20:21:52.737] [INFO] legwork.js - 开始验证是否登录成功
+[2016-11-10 20:21:52.738] [INFO] legwork.js - 执行任意一个命令来验证
+[2016-11-10 20:21:52.739] [INFO] console - 开始执行命令...
+[2016-11-10 20:21:52.903] [INFO] console - 获取数据流...
+[2016-11-10 20:21:52.956] [INFO] console - 获取的数据： <Buffer 63 68 65 63 6b 69 6e 67 2e 2e 2e 0a>
+[2016-11-10 20:21:52.957] [INFO] legwork.js - 登录正确！！！！！！！！
+[2016-11-10 20:21:52.958] [INFO] legwork.js - 开始执行uploadFile:------
+[2016-11-10 20:21:52.958] [INFO] console - 开始执行命令...
+[2016-11-10 20:21:52.969] [INFO] console - 获取数据流...
+[2016-11-10 20:21:53.030] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-10 20:21:53.032] [INFO] legwork.js - 开始执行async最后的回调处理...
+[2016-11-10 20:21:53.033] [INFO] legwork.js - 输出内容到view层...
+[2016-11-10 20:21:53.039] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET /index?id=aly HTTP/1.1" 304 - "http://200.200.169.161:3000/index?id=aly" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-10 20:22:16.932] [INFO] legwork.js - 登录的服务器为：阿里云
+[2016-11-10 20:22:16.948] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET /cloudDisk HTTP/1.1" 200 15923 "http://200.200.169.161:3000/index?id=aly" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-10 20:22:17.730] [INFO] legwork.js - 登录的服务器为：阿里云
+[2016-11-10 20:22:17.743] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET /cloudDisk HTTP/1.1" 304 - "http://200.200.169.161:3000/cloudDisk" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-10 20:22:29.051] [INFO] console - userInfoCMD: get_user_info 12345678900
+[2016-11-10 20:22:29.227] [INFO] console - userInfo: dname=公安局,account=12345678900,did=74725,pid=652808,employee_id=12345打底裤
+name=admin,department=142:网警大队,type=PID_ADMIN,status=ONWORK
+cdtype=PBCDT_IOS,client_version=2.4.1
+not set auto_wa_status
+device_info={"appVer":"v2.4.1 Build-66174","Plat":"iPhone92","Bg":2,"BundleID":"com.sangfor.pocket","Bit":64,"OS":"10.1.1","JailBreak":false}
+last_login_time=2016-11-10 19:04:50
+create_time=2014-10-23 14:33:29
+server ip=10.144.216.85 - serverbeta, status=RUNNING
+
+[2016-11-10 20:22:29.229] [INFO] legwork.js - nextCMD: python cloudDisk.py 74725 云盘介绍1.png
+[2016-11-10 20:22:29.872] [INFO] console - userInfoCMD: get_user_info 12345678900
+[2016-11-10 20:22:29.874] [INFO] console - 开始执行命令...
+[2016-11-10 20:22:30.020] [INFO] console - 获取数据流...
+[2016-11-10 20:22:30.043] [INFO] console - userInfo: dname=公安局,account=12345678900,did=74725,pid=652808,employee_id=12345打底裤
+name=admin,department=142:网警大队,type=PID_ADMIN,status=ONWORK
+cdtype=PBCDT_IOS,client_version=2.4.1
+not set auto_wa_status
+device_info={"appVer":"v2.4.1 Build-66174","Plat":"iPhone92","Bg":2,"BundleID":"com.sangfor.pocket","Bit":64,"OS":"10.1.1","JailBreak":false}
+last_login_time=2016-11-10 19:04:50
+create_time=2014-10-23 14:33:29
+server ip=10.144.216.85 - serverbeta, status=RUNNING
+
+[2016-11-10 20:22:30.045] [INFO] legwork.js - nextCMD: python cloudDisk.py 74725 云盘介绍1.png
+[2016-11-10 20:22:35.633] [INFO] console - userInfoCMD: get_user_info 12345678900
+[2016-11-10 20:22:35.640] [INFO] console - 开始执行命令...
+[2016-11-10 20:22:35.640] [INFO] console - 开始执行命令...
+[2016-11-10 20:22:35.809] [INFO] console - userInfo: dname=公安局,account=12345678900,did=74725,pid=652808,employee_id=12345打底裤
+name=admin,department=142:网警大队,type=PID_ADMIN,status=ONWORK
+cdtype=PBCDT_IOS,client_version=2.4.1
+not set auto_wa_status
+device_info={"appVer":"v2.4.1 Build-66174","Plat":"iPhone92","Bg":2,"BundleID":"com.sangfor.pocket","Bit":64,"OS":"10.1.1","JailBreak":false}
+last_login_time=2016-11-10 19:04:50
+create_time=2014-10-23 14:33:29
+server ip=10.144.216.85 - serverbeta, status=RUNNING
+
+[2016-11-10 20:22:35.810] [INFO] legwork.js - nextCMD: python cloudDisk.py 74725 云盘介绍1.png
+[2016-11-10 20:22:36.487] [INFO] console - userInfoCMD: get_user_info 12345678900
+[2016-11-10 20:22:36.488] [INFO] console - 开始执行命令...
+[2016-11-10 20:22:36.489] [INFO] console - 开始执行命令...
+[2016-11-10 20:22:36.490] [INFO] console - 开始执行命令...

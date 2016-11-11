@@ -1,0 +1,653 @@
+[2016-11-01 15:27:45.698] [ERROR] console - invalid document source 
+@#[line:0,col:undefined]
+[2016-11-01 15:27:50.971] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 15:27:51.692] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 15:27:55.065] [INFO] console - 登录的服务器为：阿里云
+[2016-11-01 15:27:55.373] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 15:27:55.375] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:27:55.376] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:27:55.377] [INFO] console - 开始执行命令...
+[2016-11-01 15:27:55.524] [INFO] console - 获取数据流...
+[2016-11-01 15:29:55.075] [INFO] console - 登录的服务器为：阿里云
+[2016-11-01 15:29:55.359] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 15:29:55.364] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:29:55.365] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:29:55.365] [INFO] console - 开始执行命令...
+[2016-11-01 15:29:55.477] [INFO] console - 获取数据流...
+[2016-11-01 15:40:17.493] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 15:40:17.497] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:40:17.498] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:40:20.211] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 15:40:20.939] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 15:40:26.584] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 15:40:26.586] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:40:26.586] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:42:26.597] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 15:42:26.601] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:42:26.601] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:44:26.924] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 15:44:26.924] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:44:26.925] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:46:32.031] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 15:46:32.032] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:46:32.033] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:49:02.142] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 15:49:02.143] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:49:02.144] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:49:35.181] [ERROR] console - invalid document source 
+@#[line:0,col:undefined]
+[2016-11-01 15:49:38.148] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 200 12299 "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 15:49:38.820] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 15:49:48.735] [INFO] console - 登录的服务器为：阿里云
+[2016-11-01 15:49:49.031] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 15:49:49.032] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:49:49.033] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:49:49.034] [INFO] console - 开始执行命令...
+[2016-11-01 15:49:49.148] [INFO] console - 获取数据流...
+[2016-11-01 15:50:25.826] [INFO] console - -----------------------
+[2016-11-01 15:50:31.587] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 15:50:31.592] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:50:31.593] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:50:31.593] [INFO] console - 开始执行命令...
+[2016-11-01 15:50:32.423] [INFO] console - 获取数据流...
+[2016-11-01 15:50:32.731] [INFO] console - 获取的数据： <Buffer 61 6e 61 63 6f 6e 64 61 2d 6b 73 2e 63 66 67 0a 62 61 74 63 68 5f 64 65 6c 5f 6d 79 73 71 6c 5f 64 61 74 61 62 61 73 65 2e 73 68 0a 63 6c 69 65 6e 74 ... >
+[2016-11-01 15:50:32.734] [INFO] uploadToolFile.js - ls: anaconda-ks.cfg
+batch_del_mysql_database.sh
+client_ver_config.xml
+collections_count.txt
+expect-5.43
+formmodeltotemplate
+functions.js
+install_server_packet.sh
+mongodb_isChanged.py
+MySQL-python-1.2.5.zip
+OR cycles
+packet
+persons.csv
+province_city_county.txt
+server_install.sh
+server_operate.sh
+sn.sh
+store_packet
+store.py
+test
+tstest.py
+webapp.py
+zh
+数据库did检查
+数据迁移工具
+
+[2016-11-01 15:50:32.735] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 15:50:32.735] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 15:50:32.736] [INFO] console - 开始执行命令...
+[2016-11-01 15:50:32.750] [INFO] console - 获取数据流...
+[2016-11-01 15:52:55.468] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 15:52:56.155] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 15:53:02.015] [INFO] console - -----------------------
+[2016-11-01 15:53:02.452] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 15:53:02.453] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:53:02.453] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:53:02.454] [INFO] console - 开始执行命令...
+[2016-11-01 15:53:03.415] [INFO] console - 获取数据流...
+[2016-11-01 15:53:03.595] [INFO] console - 获取的数据： <Buffer 61 6e 61 63 6f 6e 64 61 2d 6b 73 2e 63 66 67 0a 62 61 74 63 68 5f 64 65 6c 5f 6d 79 73 71 6c 5f 64 61 74 61 62 61 73 65 2e 73 68 0a 63 6c 69 65 6e 74 ... >
+[2016-11-01 15:53:03.598] [INFO] uploadToolFile.js - ls: anaconda-ks.cfg
+batch_del_mysql_database.sh
+client_ver_config.xml
+collections_count.txt
+expect-5.43
+formmodeltotemplate
+functions.js
+install_server_packet.sh
+mongodb_isChanged.py
+MySQL-python-1.2.5.zip
+OR cycles
+packet
+persons.csv
+province_city_county.txt
+server_install.sh
+server_operate.sh
+sn.sh
+store_packet
+store.py
+tstest.py
+webapp.py
+zh
+数据库did检查
+数据迁移工具
+
+[2016-11-01 15:53:03.599] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 15:53:03.599] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 15:53:03.599] [INFO] console - 开始执行命令...
+[2016-11-01 15:53:03.619] [INFO] console - 获取数据流...
+[2016-11-01 15:55:02.025] [INFO] console - -----------------------
+[2016-11-01 15:55:02.427] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 15:55:02.428] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:55:02.428] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:55:02.429] [INFO] console - 开始执行命令...
+[2016-11-01 15:55:03.209] [INFO] console - 获取数据流...
+[2016-11-01 15:55:03.428] [INFO] console - 获取的数据： <Buffer 61 6e 61 63 6f 6e 64 61 2d 6b 73 2e 63 66 67 0a 62 61 74 63 68 5f 64 65 6c 5f 6d 79 73 71 6c 5f 64 61 74 61 62 61 73 65 2e 73 68 0a 63 6c 69 65 6e 74 ... >
+[2016-11-01 15:55:03.429] [INFO] uploadToolFile.js - ls: anaconda-ks.cfg
+batch_del_mysql_database.sh
+client_ver_config.xml
+collections_count.txt
+expect-5.43
+formmodeltotemplate
+functions.js
+install_server_packet.sh
+mongodb_isChanged.py
+MySQL-python-1.2.5.zip
+OR cycles
+packet
+persons.csv
+province_city_county.txt
+server_install.sh
+server_operate.sh
+sn.sh
+store_packet
+store.py
+test
+tstest.py
+webapp.py
+zh
+数据库did检查
+数据迁移工具
+
+[2016-11-01 15:55:03.429] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 15:55:03.430] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 15:55:03.430] [INFO] console - 开始执行命令...
+[2016-11-01 15:55:03.442] [INFO] console - 获取数据流...
+[2016-11-01 15:59:12.068] [ERROR] console - invalid document source 
+@#[line:0,col:undefined]
+[2016-11-01 15:59:25.020] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 15:59:25.805] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 15:59:44.383] [INFO] console - -----------------------
+[2016-11-01 15:59:45.742] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 15:59:45.744] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 15:59:45.745] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 15:59:45.748] [INFO] console - 开始执行命令...
+[2016-11-01 15:59:46.548] [INFO] console - 获取数据流...
+[2016-11-01 15:59:46.790] [INFO] console - 获取的数据： <Buffer 61 6e 61 63 6f 6e 64 61 2d 6b 73 2e 63 66 67 0a 62 61 74 63 68 5f 64 65 6c 5f 6d 79 73 71 6c 5f 64 61 74 61 62 61 73 65 2e 73 68 0a 63 6c 69 65 6e 74 ... >
+[2016-11-01 15:59:46.793] [INFO] uploadToolFile.js - ls: anaconda-ks.cfg
+batch_del_mysql_database.sh
+client_ver_config.xml
+collections_count.txt
+expect-5.43
+formmodeltotemplate
+functions.js
+install_server_packet.sh
+mongodb_isChanged.py
+MySQL-python-1.2.5.zip
+OR cycles
+packet
+persons.csv
+province_city_county.txt
+server_install.sh
+server_operate.sh
+sn.sh
+store_packet
+store.py
+test
+tstest.py
+webapp.py
+zh
+数据库did检查
+数据迁移工具
+
+[2016-11-01 15:59:46.793] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 15:59:46.794] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 15:59:46.794] [INFO] console - 开始执行命令...
+[2016-11-01 15:59:46.814] [INFO] console - 获取数据流...
+[2016-11-01 15:59:46.956] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 15:59:46.959] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 15:59:46.960] [INFO] console - [TypeError: undefined is not a function]
+TypeError: undefined is not a function
+    at /home/tunsuy/MOAProblemLocation/public/javascripts/uploadToolFile.js:78:14
+    at /home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:484:16
+    at nextTask (/home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:5195:29)
+    at /home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:5202:13
+    at apply (/home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:41:25)
+    at /home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:76:12
+    at /home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:988:16
+    at Channel.<anonymous> (/home/tunsuy/MOAProblemLocation/models/coreData/helpClass/coreOperate.js:22:10)
+    at Channel.emit (events.js:107:17)
+    at readableAddChunk (_stream_readable.js:163:16)
+[2016-11-01 15:59:46.966] [INFO] console - 登录失败exce！！！！！！！！
+[2016-11-01 16:01:44.374] [INFO] console - -----------------------
+[2016-11-01 16:01:45.683] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 16:01:45.684] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:01:45.684] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:01:45.685] [INFO] console - 开始执行命令...
+[2016-11-01 16:01:46.512] [INFO] console - 获取数据流...
+[2016-11-01 16:01:46.670] [INFO] console - 获取的数据： <Buffer 61 6e 61 63 6f 6e 64 61 2d 6b 73 2e 63 66 67 0a 62 61 74 63 68 5f 64 65 6c 5f 6d 79 73 71 6c 5f 64 61 74 61 62 61 73 65 2e 73 68 0a 63 6c 69 65 6e 74 ... >
+[2016-11-01 16:01:46.672] [INFO] uploadToolFile.js - ls: anaconda-ks.cfg
+batch_del_mysql_database.sh
+client_ver_config.xml
+collections_count.txt
+expect-5.43
+formmodeltotemplate
+functions.js
+install_server_packet.sh
+mongodb_isChanged.py
+MySQL-python-1.2.5.zip
+OR cycles
+packet
+persons.csv
+province_city_county.txt
+server_install.sh
+server_operate.sh
+sn.sh
+store_packet
+store.py
+test
+tstest.py
+webapp.py
+zh
+数据库did检查
+数据迁移工具
+
+[2016-11-01 16:01:46.672] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 16:01:46.672] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 16:01:46.673] [INFO] console - 开始执行命令...
+[2016-11-01 16:01:46.688] [INFO] console - 获取数据流...
+[2016-11-01 16:01:46.861] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 16:01:46.863] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 16:01:46.864] [INFO] console - [TypeError: undefined is not a function]
+TypeError: undefined is not a function
+    at /home/tunsuy/MOAProblemLocation/public/javascripts/uploadToolFile.js:78:14
+    at /home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:484:16
+    at nextTask (/home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:5195:29)
+    at /home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:5202:13
+    at apply (/home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:41:25)
+    at /home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:76:12
+    at /home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:988:16
+    at Channel.<anonymous> (/home/tunsuy/MOAProblemLocation/models/coreData/helpClass/coreOperate.js:22:10)
+    at Channel.emit (events.js:107:17)
+    at readableAddChunk (_stream_readable.js:163:16)
+[2016-11-01 16:01:46.868] [INFO] console - 登录失败exce！！！！！！！！
+[2016-11-01 16:01:46.873] [INFO] console - [TypeError: undefined is not a function]
+TypeError: undefined is not a function
+    at /home/tunsuy/MOAProblemLocation/public/javascripts/uploadToolFile.js:78:14
+    at /home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:484:16
+    at nextTask (/home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:5195:29)
+    at /home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:5202:13
+    at apply (/home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:41:25)
+    at /home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:76:12
+    at /home/tunsuy/MOAProblemLocation/node_modules/async/dist/async.js:988:16
+    at Channel.<anonymous> (/home/tunsuy/MOAProblemLocation/models/coreData/helpClass/coreOperate.js:22:10)
+    at Channel.emit (events.js:107:17)
+    at readableAddChunk (_stream_readable.js:163:16)
+[2016-11-01 16:01:46.875] [INFO] console - 登录失败exce！！！！！！！！
+[2016-11-01 16:15:48.037] [ERROR] console - invalid document source 
+@#[line:0,col:undefined]
+[2016-11-01 16:15:52.433] [DEBUG] app.js - undefined - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:15:52.455] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 200 12299 "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:15:53.167] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:15:58.457] [INFO] console - -----------------------
+[2016-11-01 16:16:05.919] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 16:16:05.920] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:16:05.922] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:16:05.922] [INFO] console - 开始执行命令...
+[2016-11-01 16:16:07.555] [INFO] console - 获取数据流...
+[2016-11-01 16:16:08.089] [INFO] console - 获取的数据： <Buffer 61 6e 61 63 6f 6e 64 61 2d 6b 73 2e 63 66 67 0a 62 61 74 63 68 5f 64 65 6c 5f 6d 79 73 71 6c 5f 64 61 74 61 62 61 73 65 2e 73 68 0a 63 6c 69 65 6e 74 ... >
+[2016-11-01 16:16:08.091] [INFO] uploadToolFile.js - ls: anaconda-ks.cfg
+batch_del_mysql_database.sh
+client_ver_config.xml
+collections_count.txt
+expect-5.43
+formmodeltotemplate
+functions.js
+install_server_packet.sh
+mongodb_isChanged.py
+MySQL-python-1.2.5.zip
+OR cycles
+packet
+persons.csv
+province_city_county.txt
+server_install.sh
+server_operate.sh
+sn.sh
+store_packet
+store.py
+test
+tstest.py
+webapp.py
+zh
+数据库did检查
+数据迁移工具
+
+[2016-11-01 16:16:08.092] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 16:16:08.092] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 16:16:08.094] [INFO] console - 开始执行命令...
+[2016-11-01 16:16:08.109] [INFO] console - 获取数据流...
+[2016-11-01 16:16:08.502] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 16:16:08.503] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 16:17:58.445] [INFO] console - -----------------------
+[2016-11-01 16:17:58.883] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 16:17:58.883] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:17:58.884] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:17:58.885] [INFO] console - 开始执行命令...
+[2016-11-01 16:17:59.678] [INFO] console - 获取数据流...
+[2016-11-01 16:17:59.874] [INFO] console - 获取的数据： <Buffer 61 6e 61 63 6f 6e 64 61 2d 6b 73 2e 63 66 67 0a 62 61 74 63 68 5f 64 65 6c 5f 6d 79 73 71 6c 5f 64 61 74 61 62 61 73 65 2e 73 68 0a 63 6c 69 65 6e 74 ... >
+[2016-11-01 16:17:59.876] [INFO] uploadToolFile.js - ls: anaconda-ks.cfg
+batch_del_mysql_database.sh
+client_ver_config.xml
+collections_count.txt
+expect-5.43
+formmodeltotemplate
+functions.js
+install_server_packet.sh
+mongodb_isChanged.py
+MySQL-python-1.2.5.zip
+OR cycles
+packet
+persons.csv
+province_city_county.txt
+server_install.sh
+server_operate.sh
+sn.sh
+store_packet
+store.py
+test
+tstest.py
+webapp.py
+zh
+数据库did检查
+数据迁移工具
+
+[2016-11-01 16:17:59.876] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 16:17:59.876] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 16:17:59.877] [INFO] console - 开始执行命令...
+[2016-11-01 16:17:59.893] [INFO] console - 获取数据流...
+[2016-11-01 16:18:00.061] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 16:18:00.064] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 16:21:24.173] [ERROR] console - invalid document source 
+@#[line:0,col:undefined]
+[2016-11-01 16:21:28.101] [INFO] console - 登录的服务器为：undefined
+[2016-11-01 16:21:28.119] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET /index HTTP/1.1" 302 58 "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:21:28.156] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:21:28.801] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:21:34.528] [INFO] console - -----------------------
+[2016-11-01 16:21:38.564] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 16:21:38.566] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:21:38.568] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:21:38.568] [INFO] console - 开始执行命令...
+[2016-11-01 16:21:39.375] [INFO] console - 获取数据流...
+[2016-11-01 16:21:39.622] [INFO] console - 获取的数据： <Buffer 61 6e 61 63 6f 6e 64 61 2d 6b 73 2e 63 66 67 0a 62 61 74 63 68 5f 64 65 6c 5f 6d 79 73 71 6c 5f 64 61 74 61 62 61 73 65 2e 73 68 0a 63 6c 69 65 6e 74 ... >
+[2016-11-01 16:21:39.626] [INFO] uploadToolFile.js - ls: anaconda-ks.cfg
+batch_del_mysql_database.sh
+client_ver_config.xml
+collections_count.txt
+expect-5.43
+formmodeltotemplate
+functions.js
+install_server_packet.sh
+mongodb_isChanged.py
+MySQL-python-1.2.5.zip
+OR cycles
+packet
+persons.csv
+province_city_county.txt
+server_install.sh
+server_operate.sh
+sn.sh
+store_packet
+store.py
+test
+tstest.py
+webapp.py
+zh
+数据库did检查
+数据迁移工具
+
+[2016-11-01 16:21:39.630] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 16:21:39.630] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 16:21:39.631] [INFO] console - 开始执行命令...
+[2016-11-01 16:21:39.647] [INFO] console - 获取数据流...
+[2016-11-01 16:21:39.790] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 16:21:39.792] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 16:21:39.792] [INFO] console - 输出内容到view层...
+[2016-11-01 16:23:34.518] [INFO] console - -----------------------
+[2016-11-01 16:23:43.766] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 16:23:43.767] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:23:43.768] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:23:43.770] [INFO] console - 开始执行命令...
+[2016-11-01 16:23:44.544] [INFO] console - 获取数据流...
+[2016-11-01 16:23:44.737] [INFO] console - 获取的数据： <Buffer 61 6e 61 63 6f 6e 64 61 2d 6b 73 2e 63 66 67 0a 62 61 74 63 68 5f 64 65 6c 5f 6d 79 73 71 6c 5f 64 61 74 61 62 61 73 65 2e 73 68 0a 63 6c 69 65 6e 74 ... >
+[2016-11-01 16:23:44.738] [INFO] uploadToolFile.js - ls: anaconda-ks.cfg
+batch_del_mysql_database.sh
+client_ver_config.xml
+collections_count.txt
+expect-5.43
+formmodeltotemplate
+functions.js
+install_server_packet.sh
+mongodb_isChanged.py
+MySQL-python-1.2.5.zip
+OR cycles
+packet
+persons.csv
+province_city_county.txt
+server_install.sh
+server_operate.sh
+sn.sh
+store_packet
+store.py
+test
+tstest.py
+webapp.py
+zh
+数据库did检查
+数据迁移工具
+
+[2016-11-01 16:23:44.739] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 16:23:44.739] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 16:23:44.741] [INFO] console - 开始执行命令...
+[2016-11-01 16:23:44.753] [INFO] console - 获取数据流...
+[2016-11-01 16:23:44.899] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 16:23:44.902] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 16:23:44.905] [INFO] console - 输出内容到view层...
+[2016-11-01 16:31:34.656] [ERROR] console - invalid document source 
+@#[line:0,col:undefined]
+[2016-11-01 16:31:37.826] [INFO] console - 登录的服务器为：undefined
+[2016-11-01 16:31:37.844] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET /index HTTP/1.1" 302 58 "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:31:37.881] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:31:38.533] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:31:44.238] [INFO] console - -----------------------
+[2016-11-01 16:31:44.656] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 16:31:44.658] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:31:44.660] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:31:44.661] [INFO] console - 开始执行命令...
+[2016-11-01 16:31:45.512] [INFO] console - 获取数据流...
+[2016-11-01 16:31:45.705] [INFO] console - 获取的数据： <Buffer 61 6e 61 63 6f 6e 64 61 2d 6b 73 2e 63 66 67 0a 62 61 74 63 68 5f 64 65 6c 5f 6d 79 73 71 6c 5f 64 61 74 61 62 61 73 65 2e 73 68 0a 63 6c 69 65 6e 74 ... >
+[2016-11-01 16:31:45.708] [INFO] uploadToolFile.js - ls: anaconda-ks.cfg
+batch_del_mysql_database.sh
+client_ver_config.xml
+collections_count.txt
+expect-5.43
+formmodeltotemplate
+functions.js
+install_server_packet.sh
+mongodb_isChanged.py
+MySQL-python-1.2.5.zip
+OR cycles
+packet
+persons.csv
+province_city_county.txt
+server_install.sh
+server_operate.sh
+sn.sh
+store_packet
+store.py
+test
+tstest.py
+webapp.py
+zh
+数据库did检查
+数据迁移工具
+
+[2016-11-01 16:31:45.713] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 16:31:45.713] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 16:31:45.713] [INFO] console - 开始执行命令...
+[2016-11-01 16:31:45.731] [INFO] console - 获取数据流...
+[2016-11-01 16:31:45.888] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 16:31:45.890] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 16:31:45.891] [INFO] uploadToolFile.js - 输出内容到view层...
+[2016-11-01 16:33:26.803] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:33:27.547] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:33:31.640] [INFO] console - 登录的服务器为：阿里云
+[2016-11-01 16:33:32.531] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 16:33:32.532] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:33:32.533] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:33:32.533] [INFO] console - 开始执行命令...
+[2016-11-01 16:33:33.127] [INFO] console - 获取数据流...
+[2016-11-01 16:35:31.671] [INFO] console - 登录的服务器为：阿里云
+[2016-11-01 16:35:31.995] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 16:35:31.997] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:35:31.998] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:35:31.998] [INFO] console - 开始执行命令...
+[2016-11-01 16:35:32.162] [INFO] console - 获取数据流...
+[2016-11-01 16:48:47.823] [ERROR] console - invalid document source 
+@#[line:0,col:undefined]
+[2016-11-01 16:48:53.800] [INFO] console - 登录的服务器为：阿里云
+[2016-11-01 16:48:54.104] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 16:48:54.105] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:48:54.106] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:48:54.107] [INFO] console - 开始执行命令...
+[2016-11-01 16:48:54.227] [INFO] console - 获取数据流...
+[2016-11-01 16:48:54.298] [INFO] console - 获取的数据： <Buffer 63 68 65 63 6b 69 6e 67 2e 2e 2e 0a>
+[2016-11-01 16:48:54.301] [INFO] uploadToolFile.js - ls: checking...
+
+[2016-11-01 16:48:54.301] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 16:48:54.302] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 16:48:54.302] [INFO] console - 开始执行命令...
+[2016-11-01 16:48:54.324] [INFO] console - 获取数据流...
+[2016-11-01 16:48:54.378] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 16:48:54.380] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 16:48:54.380] [INFO] uploadToolFile.js - 输出内容到view层...
+[2016-11-01 16:48:54.423] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET /index?id=aly HTTP/1.1" 200 13676 "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:48:55.176] [INFO] console - 登录的服务器为：阿里云
+[2016-11-01 16:48:55.459] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 16:48:55.460] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:48:55.461] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:48:55.461] [INFO] console - 开始执行命令...
+[2016-11-01 16:48:55.580] [INFO] console - 获取数据流...
+[2016-11-01 16:48:55.626] [INFO] console - 获取的数据： <Buffer 63 68 65 63 6b 69 6e 67 2e 2e 2e 0a>
+[2016-11-01 16:48:55.627] [INFO] uploadToolFile.js - ls: checking...
+
+[2016-11-01 16:48:55.627] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 16:48:55.627] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 16:48:55.628] [INFO] console - 开始执行命令...
+[2016-11-01 16:48:55.639] [INFO] console - 获取数据流...
+[2016-11-01 16:48:55.681] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 16:48:55.684] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 16:48:55.684] [INFO] uploadToolFile.js - 输出内容到view层...
+[2016-11-01 16:48:55.694] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET /index?id=aly HTTP/1.1" 304 - "http://200.200.169.161:3000/index?id=aly" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:48:56.565] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:48:57.356] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:49:06.090] [INFO] console - 登录的服务器为：阿里云
+[2016-11-01 16:49:06.404] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 16:49:06.405] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:49:06.406] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:49:06.406] [INFO] console - 开始执行命令...
+[2016-11-01 16:49:06.952] [INFO] console - 获取数据流...
+[2016-11-01 16:49:07.002] [INFO] console - 获取的数据： <Buffer 63 68 65 63 6b 69 6e 67 2e 2e 2e 0a>
+[2016-11-01 16:49:07.003] [INFO] uploadToolFile.js - ls: checking...
+
+[2016-11-01 16:49:07.004] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 16:49:07.004] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 16:49:07.004] [INFO] console - 开始执行命令...
+[2016-11-01 16:49:07.014] [INFO] console - 获取数据流...
+[2016-11-01 16:49:07.272] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 16:49:07.274] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 16:49:07.274] [INFO] uploadToolFile.js - 输出内容到view层...
+[2016-11-01 16:49:07.279] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET /index?id=aly HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:49:07.686] [INFO] console - 登录的服务器为：阿里云
+[2016-11-01 16:49:07.955] [INFO] uploadToolFile.js - aly 连接成功...
+[2016-11-01 16:49:07.956] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:49:07.957] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:49:07.957] [INFO] console - 开始执行命令...
+[2016-11-01 16:49:08.064] [INFO] console - 获取数据流...
+[2016-11-01 16:49:08.104] [INFO] console - 获取的数据： <Buffer 63 68 65 63 6b 69 6e 67 2e 2e 2e 0a>
+[2016-11-01 16:49:08.105] [INFO] uploadToolFile.js - ls: checking...
+
+[2016-11-01 16:49:08.105] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 16:49:08.106] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 16:49:08.106] [INFO] console - 开始执行命令...
+[2016-11-01 16:49:08.122] [INFO] console - 获取数据流...
+[2016-11-01 16:49:08.170] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 16:49:08.171] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 16:49:08.172] [INFO] uploadToolFile.js - 输出内容到view层...
+[2016-11-01 16:49:08.178] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET /index?id=aly HTTP/1.1" 304 - "http://200.200.169.161:3000/index?id=aly" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:50:46.956] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/index?id=aly" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:50:47.673] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 16:51:16.424] [INFO] console - -----------------------
+[2016-11-01 16:51:25.640] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 16:51:25.641] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:51:25.641] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:51:25.642] [INFO] console - 开始执行命令...
+[2016-11-01 16:51:26.534] [INFO] console - 获取数据流...
+[2016-11-01 16:51:26.728] [INFO] console - 获取的数据： <Buffer 63 68 65 63 6b 69 6e 67 2e 2e 2e 0a>
+[2016-11-01 16:51:26.730] [INFO] uploadToolFile.js - ls: checking...
+
+[2016-11-01 16:51:26.730] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 16:51:26.731] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 16:51:26.731] [INFO] console - 开始执行命令...
+[2016-11-01 16:51:26.743] [INFO] console - 获取数据流...
+[2016-11-01 16:51:26.890] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 16:51:26.891] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 16:51:26.892] [INFO] uploadToolFile.js - 输出内容到view层...
+[2016-11-01 16:53:16.442] [INFO] console - -----------------------
+[2016-11-01 16:53:22.190] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 16:53:22.191] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 16:53:22.191] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 16:53:22.192] [INFO] console - 开始执行命令...
+[2016-11-01 16:53:23.041] [INFO] console - 获取数据流...
+[2016-11-01 16:53:23.291] [INFO] console - 获取的数据： <Buffer 63 68 65 63 6b 69 6e 67 2e 2e 2e 0a>
+[2016-11-01 16:53:23.293] [INFO] uploadToolFile.js - ls: checking...
+
+[2016-11-01 16:53:23.293] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 16:53:23.293] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 16:53:23.294] [INFO] console - 开始执行命令...
+[2016-11-01 16:53:23.313] [INFO] console - 获取数据流...
+[2016-11-01 16:53:23.522] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 16:53:23.523] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 16:53:23.523] [INFO] uploadToolFile.js - 输出内容到view层...
+[2016-11-01 17:10:35.870] [ERROR] console - invalid document source 
+@#[line:0,col:undefined]
+[2016-11-01 17:10:47.315] [DEBUG] app.js - undefined - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 17:10:47.355] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 200 12299 "" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 17:10:48.041] [DEBUG] app.js - ::ffff:200.200.105.63 - - "GET / HTTP/1.1" 304 - "http://200.200.169.161:3000/" "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+[2016-11-01 17:10:53.103] [INFO] console - -----------------------
+[2016-11-01 17:10:56.594] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 17:10:56.595] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 17:10:56.596] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 17:10:56.597] [INFO] console - 开始执行命令...
+[2016-11-01 17:10:57.399] [INFO] console - 获取数据流...
+[2016-11-01 17:10:57.615] [INFO] console - 获取的数据： <Buffer 63 68 65 63 6b 69 6e 67 2e 2e 2e 0a>
+[2016-11-01 17:10:57.618] [INFO] uploadToolFile.js - ls: checking...
+
+[2016-11-01 17:10:57.618] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 17:10:57.618] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 17:10:57.620] [INFO] console - 开始执行命令...
+[2016-11-01 17:10:57.639] [INFO] console - 获取数据流...
+[2016-11-01 17:10:57.814] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 17:10:57.815] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 17:10:57.816] [INFO] uploadToolFile.js - 输出内容到view层...
+[2016-11-01 17:10:57.816] [INFO] console - req.session.reqServerIP:  200.200.169.170
+[2016-11-01 17:12:53.092] [INFO] console - -----------------------
+[2016-11-01 17:12:56.733] [INFO] uploadToolFile.js - 服务器连接成功...
+[2016-11-01 17:12:56.734] [INFO] uploadToolFile.js - 开始验证是否登录成功
+[2016-11-01 17:12:56.734] [INFO] uploadToolFile.js - 执行ls命令来验证
+[2016-11-01 17:12:56.736] [INFO] console - 开始执行命令...
+[2016-11-01 17:12:57.573] [INFO] console - 获取数据流...
+[2016-11-01 17:12:57.749] [INFO] console - 获取的数据： <Buffer 63 68 65 63 6b 69 6e 67 2e 2e 2e 0a>
+[2016-11-01 17:12:57.751] [INFO] uploadToolFile.js - ls: checking...
+
+[2016-11-01 17:12:57.751] [INFO] uploadToolFile.js - 登录正确！！！！！！！！
+[2016-11-01 17:12:57.751] [INFO] uploadToolFile.js - 开始执行uploadFile:------
+[2016-11-01 17:12:57.753] [INFO] console - 开始执行命令...
+[2016-11-01 17:12:57.766] [INFO] console - 获取数据流...
+[2016-11-01 17:12:57.924] [INFO] console - 获取的数据： <Buffer 64 6f 6e 65 21 0a>
+[2016-11-01 17:12:57.927] [INFO] uploadToolFile.js - 开始执行async最后的回调处理...
+[2016-11-01 17:12:57.931] [INFO] uploadToolFile.js - 输出内容到view层...
+[2016-11-01 17:12:57.931] [INFO] console - req.session.reqServerIP:  200.200.169.170

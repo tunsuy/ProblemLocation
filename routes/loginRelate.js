@@ -16,7 +16,13 @@ router.get('/', function(req, res, next) {
 		// var cmdData = questionsData[parseInt(reqId)+2].firstChild.data;
 	console.log("登录的服务器为："+global.reqServerIP);
 	if (global.reqServerIP) {
-		res.render('loginRelate.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: global.reqServerIP, account: "", content: ""});
+		res.render('loginRelate.ejs', { 
+			modelsAttributes: modelsAttributesData, 
+			modelsPropertys: modelsPropertysData, 
+			serverIP: global.reqServerIP, 
+			account: "", 
+			content: ""
+		});
 	}else{
 		res.redirect('/');
 	}
@@ -30,7 +36,13 @@ router.post('/', function(req, res, next) {
 	var reqServerIP = req.query.id;
 	// if(reqId != undefined && reqServerIP != ""){
 		// var cmdData = questionsData[parseInt(reqId)+2].firstChild.data;
-		res.render('loginRelate.ejs', { modelsAttributes: modelsAttributesData, modelsPropertys: modelsPropertysData, serverIP: reqServerIP, account: "", content: ""});
+		res.render('loginRelate.ejs', { 
+			modelsAttributes: modelsAttributesData, 
+			modelsPropertys: modelsPropertysData, 
+			serverIP: reqServerIP, 
+			account: "", 
+			content: ""
+		});
 	// }
 	// else{
 	// 	res.render('index.ejs', { modelsPropertys: modelsPropertysPropertysData, questions: questionsData, cmd: cmdData, serverIP: "当前没有登录服务器"});
