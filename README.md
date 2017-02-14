@@ -4,6 +4,7 @@
 
 ##  效果展示
 ![image](https://github.com/tunsuy/ProblemLocation/blob/promise/%E6%95%88%E6%9E%9C%E5%9B%BE/%E6%95%88%E6%9E%9C1.jpg)
+![image](https://github.com/tunsuy/ProblemLocation/blob/promise/%E6%95%88%E6%9E%9C%E5%9B%BE/%E6%95%88%E6%9E%9C2.jpg)
 
 ##  技术选型
 考虑到易用性和可操作性，决定做成web形式的，任何人都可以很方便的访问到该系统。  
